@@ -440,25 +440,37 @@ export function Features() {
 }
 
 /* ════════════════════════════════════════════
-   GAMIFICATION  (dark themed card — matches screenshot exactly)
+   GAMIFICATION  (on-theme + 3D flip cards + 3D Level-Up badge)
    ════════════════════════════════════════════ */
 export function Gamification() {
-  const bullets = [
+  const cards = [
     {
-      title: "Dynamic Calibration:",
-      desc: "The system automatically upgrades or downgrades students' subject-wise personas based on real-time learning and performance.",
+      icon: Trophy,
+      title: "Dynamic Calibration",
+      desc: "Personas auto-upgrade or downgrade based on real-time learning and performance.",
+      back: "Adaptive AI keeps every learner in their ideal challenge zone — never too hard, never too easy.",
+      tint: "from-sage/40 to-sage/10",
     },
     {
-      title: "Gamified Experience:",
-      desc: "Student leaderboards and badges designed to foster healthy competition and greater engagement with learning content",
+      icon: Sparkles,
+      title: "Gamified Experience",
+      desc: "Leaderboards and badges that foster healthy competition and deeper engagement.",
+      back: "Earn streaks, climb ranks, and unlock badges that make daily practice genuinely fun.",
+      tint: "from-peach/50 to-peach/10",
     },
     {
-      title: "Balanced Usage:",
-      desc: "Designed for 6–8 hours per week to maximize learning impact while avoiding screen time fatigue.",
+      icon: HeartHandshake,
+      title: "Balanced Usage",
+      desc: "Designed for 6–8 hours per week — maximum impact, zero screen-time fatigue.",
+      back: "Smart pacing nudges and break prompts keep learning healthy and sustainable.",
+      tint: "from-sky/50 to-sky/10",
     },
     {
-      title: "Inclusive Design:",
-      desc: "Specialized models for students with special needs, ensuring accessibility for all.",
+      icon: ShieldCheck,
+      title: "Inclusive Design",
+      desc: "Specialized models for students with special needs — accessibility for all.",
+      back: "Voice, captions, dyslexia-friendly typography, and adaptive contrast built in.",
+      tint: "from-sun/50 to-sun/10",
     },
   ];
 
@@ -467,162 +479,124 @@ export function Gamification() {
       <SectionDivider />
       <section
         id="gamification"
-        className="relative py-16 md:py-24 overflow-hidden"
-        style={{
-          background:
-            "radial-gradient(ellipse at top left, oklch(0.32 0.12 290 / 0.55), transparent 55%), radial-gradient(ellipse at bottom right, oklch(0.45 0.15 220 / 0.35), transparent 55%), linear-gradient(180deg, oklch(0.18 0.08 280), oklch(0.14 0.06 270))",
-        }}
+        className="relative overflow-hidden py-12 md:py-20 bg-gradient-to-b from-transparent via-sage/8 to-transparent"
       >
-        {/* Floating orbs */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <motion.div
-            className="absolute left-[8%] top-[12%] h-72 w-72 rounded-full blur-3xl"
-            style={{ background: "oklch(0.55 0.22 290 / 0.25)" }}
-            animate={{ x: [0, 30, 0], y: [0, 20, 0], scale: [1, 1.1, 1] }}
-            transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-sage/15 blur-3xl"
+            animate={{ x: [0, 30, 0], y: [0, 20, 0] }}
+            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
-            className="absolute right-[6%] bottom-[8%] h-80 w-80 rounded-full blur-3xl"
-            style={{ background: "oklch(0.65 0.18 210 / 0.22)" }}
-            animate={{ x: [0, -40, 0], y: [0, -20, 0], scale: [1, 1.15, 1] }}
-            transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute right-10 bottom-10 h-72 w-72 rounded-full bg-peach/15 blur-3xl"
+            animate={{ scale: [1, 1.15, 1] }}
+            transition={{ duration: 12, repeat: Infinity }}
           />
-          {/* Paper-cut floating shapes */}
-          <motion.svg
-            className="absolute left-1/2 top-6 h-24 w-24 opacity-30"
-            viewBox="0 0 100 100"
-            animate={{ rotate: 360, y: [0, 12, 0] }}
-            transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-          >
-            <polygon points="50,5 61,38 95,38 67,58 78,92 50,72 22,92 33,58 5,38 39,38" fill="oklch(0.7 0.18 210)" />
-          </motion.svg>
         </div>
 
         <div className="relative mx-auto max-w-6xl px-6">
-          <Reveal>
-            <div
-              className="relative overflow-hidden rounded-3xl border p-8 md:p-12"
-              style={{
-                background:
-                  "linear-gradient(135deg, oklch(0.22 0.08 285 / 0.85), oklch(0.18 0.06 270 / 0.85))",
-                borderColor: "oklch(0.55 0.18 290 / 0.35)",
-                boxShadow:
-                  "0 30px 80px -20px oklch(0.2 0.15 280 / 0.6), inset 0 1px 0 oklch(0.7 0.2 290 / 0.15)",
-              }}
-            >
-              <div className="grid items-center gap-10 md:grid-cols-[1.4fr_1fr]">
-                {/* Left: bullets */}
-                <div>
-                  <motion.h2
-                    className="text-4xl md:text-5xl font-extrabold"
-                    style={{
-                      fontFamily: "var(--font-sans)",
-                      background:
-                        "linear-gradient(90deg, oklch(0.7 0.22 295), oklch(0.65 0.2 280))",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                  >
-                    Gamification
-                  </motion.h2>
+          <SectionHeader
+            eyebrow="Unique Selling Propositions"
+            title="Gamification"
+            subtitle="Learning that levels up with every student."
+          />
 
-                  <ul className="mt-8 space-y-5">
-                    {bullets.map((b, i) => (
-                      <motion.li
-                        key={b.title}
-                        className="flex items-start gap-3"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 + i * 0.12, duration: 0.6 }}
-                      >
-                        <span
-                          className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
-                          style={{
-                            background:
-                              "linear-gradient(135deg, oklch(0.7 0.18 210), oklch(0.6 0.2 230))",
-                            boxShadow: "0 0 12px oklch(0.7 0.18 210 / 0.6)",
-                          }}
-                        >
-                          <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="white" strokeWidth="3">
-                            <polyline points="20 6 9 17 4 12" />
-                          </svg>
-                        </span>
-                        <p className="text-pretty leading-relaxed text-white/90">
-                          <span className="font-bold text-white">{b.title}</span>{" "}
-                          <span className="text-white/75">{b.desc}</span>
-                        </p>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Right: Level Up badge */}
-                <Reveal variant="scaleIn" className="flex items-center justify-center">
-                  <div className="relative h-64 w-64">
-                    {/* Rotating outer ring */}
-                    <motion.svg
-                      className="absolute inset-0 h-full w-full"
-                      viewBox="0 0 200 200"
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-                    >
-                      <defs>
-                        <linearGradient id="ringGrad" x1="0" x2="1" y1="0" y2="1">
-                          <stop offset="0%" stopColor="oklch(0.65 0.22 290)" />
-                          <stop offset="50%" stopColor="oklch(0.7 0.18 240)" />
-                          <stop offset="100%" stopColor="oklch(0.7 0.18 210)" />
-                        </linearGradient>
-                      </defs>
-                      <circle
-                        cx="100"
-                        cy="100"
-                        r="92"
-                        fill="none"
-                        stroke="url(#ringGrad)"
-                        strokeWidth="4"
-                        strokeLinecap="round"
-                        strokeDasharray="430 580"
-                      />
-                    </motion.svg>
-
-                    {/* Pulsing glow */}
+          <div className="mt-12 grid items-center gap-10 md:grid-cols-[1.4fr_1fr]">
+            {/* 3D flip cards */}
+            <StaggerGroup className="grid gap-5 sm:grid-cols-2">
+              {cards.map((c) => (
+                <StaggerItem key={c.title}>
+                  <div className="group h-44 [perspective:1200px]">
                     <motion.div
-                      className="absolute inset-4 rounded-full"
-                      style={{
-                        background:
-                          "radial-gradient(circle, oklch(0.55 0.22 280 / 0.5), transparent 70%)",
-                      }}
-                      animate={{ scale: [1, 1.1, 1], opacity: [0.6, 1, 0.6] }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                    />
-
-                    {/* Inner badge */}
-                    <div
-                      className="absolute inset-12 flex items-center justify-center rounded-full"
-                      style={{
-                        background:
-                          "radial-gradient(circle at 30% 30%, oklch(0.2 0.08 280), oklch(0.1 0.05 270))",
-                        boxShadow:
-                          "inset 0 2px 8px oklch(0.7 0.2 290 / 0.3), 0 12px 30px oklch(0.1 0.1 280 / 0.6)",
-                        border: "2px solid oklch(0.6 0.2 280 / 0.5)",
-                      }}
+                      className="relative h-full w-full rounded-3xl"
+                      style={{ transformStyle: "preserve-3d" }}
+                      whileHover={{ rotateY: 180 }}
+                      transition={{ type: "spring", stiffness: 120, damping: 16 }}
                     >
-                      <span
-                        className="text-2xl font-extrabold tracking-wide text-white"
-                        style={{ fontFamily: "var(--font-sans)" }}
+                      {/* Front */}
+                      <div
+                        className={`absolute inset-0 overflow-hidden rounded-3xl border border-border/70 bg-gradient-to-br ${c.tint} bg-card p-6 shadow-soft`}
+                        style={{ backfaceVisibility: "hidden" }}
                       >
-                        Level Up
-                      </span>
+                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-sage-deep shadow-soft">
+                          <c.icon className="h-5 w-5" />
+                        </div>
+                        <h3 className="mt-4 text-xl text-primary">{c.title}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-foreground/75">
+                          {c.desc}
+                        </p>
+                      </div>
+                      {/* Back */}
+                      <div
+                        className="absolute inset-0 flex flex-col justify-center rounded-3xl border border-sage-deep/30 bg-cta p-6 text-primary-foreground shadow-lift"
+                        style={{
+                          backfaceVisibility: "hidden",
+                          transform: "rotateY(180deg)",
+                        }}
+                      >
+                        <div className="text-xs font-medium uppercase tracking-[0.22em] opacity-80">
+                          {c.title}
+                        </div>
+                        <p className="mt-3 text-pretty text-base leading-relaxed">
+                          {c.back}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerGroup>
+
+            {/* 3D Level Up badge */}
+            <Reveal variant="scaleIn" className="flex items-center justify-center">
+              <div className="relative h-64 w-64 [perspective:1000px]">
+                {/* Outer rotating ring */}
+                <motion.div
+                  className="absolute inset-0 rounded-full border-[6px] border-transparent"
+                  style={{
+                    borderImage:
+                      "linear-gradient(135deg, var(--sage-deep), var(--peach), var(--sage-deep)) 1",
+                    borderRadius: "9999px",
+                  }}
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+                />
+                {/* Inner 3D coin */}
+                <motion.div
+                  className="absolute inset-6 rounded-full bg-gradient-to-br from-white to-cream shadow-lift"
+                  style={{ transformStyle: "preserve-3d" }}
+                  animate={{ rotateY: [0, 360] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                >
+                  <div
+                    className="absolute inset-0 flex flex-col items-center justify-center rounded-full"
+                    style={{ backfaceVisibility: "hidden" }}
+                  >
+                    <Trophy className="h-10 w-10 text-sage-deep" />
+                    <div className="mt-2 font-display text-2xl text-primary">
+                      Level Up
                     </div>
                   </div>
-                </Reveal>
+                  <div
+                    className="absolute inset-0 flex items-center justify-center rounded-full bg-cta text-primary-foreground"
+                    style={{
+                      backfaceVisibility: "hidden",
+                      transform: "rotateY(180deg)",
+                    }}
+                  >
+                    <Sparkles className="h-12 w-12" />
+                  </div>
+                </motion.div>
+                {/* Pulsing glow */}
+                <motion.div
+                  aria-hidden
+                  className="absolute -inset-4 -z-10 rounded-full bg-sage/30 blur-3xl"
+                  animate={{ opacity: [0.4, 0.8, 0.4], scale: [1, 1.08, 1] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                />
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
     </>
