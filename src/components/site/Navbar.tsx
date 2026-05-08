@@ -38,7 +38,14 @@ export function Navbar() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <Link to="/" className="group flex items-center gap-2.5">
+          <Link
+            to="/"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="group flex items-center gap-2.5"
+          >
             <motion.img
               src={navLogo}
               alt="Saral Vidhya"
