@@ -38,6 +38,7 @@ function Index() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <ScrollArrowGuide />
       <main>
         <Hero />
         <Problem />
@@ -45,6 +46,7 @@ function Index() {
         <Features />
         <Gamification />
         <Parents />
+        <Pillars />
         <CTA />
       </main>
       <Footer />
