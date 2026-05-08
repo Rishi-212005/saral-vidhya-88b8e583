@@ -34,19 +34,23 @@ export function ScrollArrowGuide({
       const ax = rect.left + rect.width / 2;
       const ay = rect.top + rect.height / 2;
 
-      let best: { dist: number; el: HTMLElement } | null = null as { dist: number; el: HTMLElement } | null;
+      let bestDist = Infinity;
+      let bestEl: HTMLElement | null = null;
       sectionIds.forEach((id) => {
         const el = document.getElementById(id);
         if (!el) return;
         const r = el.getBoundingClientRect();
-        // Only consider sections whose top is within or just below viewport
         if (r.bottom < 0 || r.top > window.innerHeight * 1.4) return;
         const d = Math.abs(r.top - window.innerHeight * 0.3);
-        if (!best || d < best.dist) best = { dist: d, el };
+        if (d < bestDist) {
+          bestDist = d;
+          bestEl = el;
+        }
       });
-      if (best) {
-        const heading = best.el.querySelector("h2, h3") as HTMLElement | null;
-        const target = heading ?? best.el;
+      if (bestEl) {
+        const el: HTMLElement = bestEl;
+        const heading = el.querySelector("h2, h3") as HTMLElement | null;
+        const target = heading ?? el;
         const tr = target.getBoundingClientRect();
         const tx = tr.left + tr.width / 2;
         const ty = tr.top + tr.height / 2;
