@@ -256,16 +256,19 @@ export function Problem() {
             subtitle="Traditional systems are failing our students by imposing rigid formats and ignoring individual learning curves."
           />
 
-          <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-2">
+          <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-2 [perspective:1400px]">
             {cards.map((c, i) => (
               <StaggerItem key={c.title}>
                 <motion.article
                   className="group relative h-full overflow-hidden rounded-3xl border border-border/70 bg-card p-8 shadow-soft"
+                  style={{ transformStyle: "preserve-3d" }}
                   whileHover={{
-                    y: -8,
-                    boxShadow: "0 2px 4px oklch(0.3 0.05 160 / 0.05), 0 24px 60px -20px oklch(0.3 0.05 160 / 0.18)",
+                    rotateX: 6,
+                    rotateY: i % 2 === 0 ? -8 : 8,
+                    y: -10,
+                    boxShadow: "0 2px 4px oklch(0.3 0.05 160 / 0.05), 0 30px 70px -20px oklch(0.3 0.05 160 / 0.25)",
                   }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  transition={{ type: "spring", stiffness: 220, damping: 18 }}
                 >
                   {/* Hover glow */}
                   <div
@@ -339,13 +342,19 @@ export function Solution() {
             subtitle="An AI-powered companion that complements professional educators, driving results through tailored experiences."
           />
 
-          <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-2">
+          <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-2 [perspective:1400px]">
             {items.map((it, i) => (
               <StaggerItem key={it.title}>
                 <motion.article
                   className="group relative h-full overflow-hidden rounded-3xl border border-border/70 bg-card p-7 shadow-soft"
-                  whileHover={{ y: -6, boxShadow: "0 2px 4px oklch(0.3 0.05 160 / 0.05), 0 24px 60px -20px oklch(0.3 0.05 160 / 0.18)" }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  style={{ transformStyle: "preserve-3d" }}
+                  whileHover={{
+                    rotateX: 5,
+                    rotateY: i % 2 === 0 ? 8 : -8,
+                    y: -8,
+                    boxShadow: "0 2px 4px oklch(0.3 0.05 160 / 0.05), 0 30px 70px -20px oklch(0.3 0.05 160 / 0.25)",
+                  }}
+                  transition={{ type: "spring", stiffness: 220, damping: 18 }}
                 >
                   <div
                     aria-hidden
@@ -682,50 +691,99 @@ export function Parents() {
    STRATEGIC PILLARS
    ════════════════════════════════════════════ */
 export function Pillars() {
-  const cards: { icon: LucideIcon; title: string; desc: string; border: string }[] = [
-    { icon: Users, title: "Student-Centered Design", desc: "Every experience is designed around how modern students learn and engage.", border: "hover:border-sage/50" },
-    { icon: Globe2, title: "Accessible Education", desc: "Reducing barriers to quality learning through affordability and adaptability.", border: "hover:border-peach/50" },
-    { icon: ShieldCheck, title: "Privacy & Trust", desc: "Built with responsible practices, secure systems, and learner-focused integrity.", border: "hover:border-sky/50" },
+  const cards: { emoji: string; icon: LucideIcon; title: string; desc: string; tint: string; ring: string }[] = [
+    {
+      emoji: "🧠",
+      icon: Brain,
+      title: "Student Psychology",
+      desc: 'Content and UI/UX developed in consultation with student psychologists to suit the needs of "Gen Z / Alpha" learners.',
+      tint: "from-sage/30 via-sage/10 to-transparent",
+      ring: "hover:border-sage/60",
+    },
+    {
+      emoji: "💰",
+      icon: Wallet,
+      title: "Replacement for Tuitions",
+      desc: "A cost-effective alternative that reduces expenses for parents and saves students time and effort",
+      tint: "from-peach/40 via-peach/10 to-transparent",
+      ring: "hover:border-peach/60",
+    },
+    {
+      emoji: "🔒",
+      icon: ShieldCheck,
+      title: "Compliance & Privacy",
+      desc: 'Strictly sticking to syllabus requirements with "private-to-customer" data models and legal compliance.',
+      tint: "from-sky/40 via-sky/10 to-transparent",
+      ring: "hover:border-sky/60",
+    },
   ];
   return (
     <>
       <SectionDivider />
-      <section className="relative py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-6">
+      <section id="pillars" className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-b from-transparent via-sage/8 to-transparent">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <motion.div
+            className="absolute left-10 top-10 h-72 w-72 rounded-full bg-sage/10 blur-3xl"
+            animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
+            transition={{ duration: 12, repeat: Infinity }}
+          />
+          <motion.div
+            className="absolute right-10 bottom-10 h-80 w-80 rounded-full bg-peach/15 blur-3xl"
+            animate={{ x: [0, 20, 0], y: [0, -10, 0] }}
+            transition={{ duration: 14, repeat: Infinity }}
+          />
+        </div>
+        <div className="relative mx-auto max-w-7xl px-6">
           <SectionHeader
-            eyebrow="Strategic Pillars"
-            title="Built on Principles That Matter"
+            eyebrow="Why It Matters"
+            title="Strategic Pillars"
           />
 
-          <StaggerGroup className="mt-16 grid gap-6 md:grid-cols-3">
+          <StaggerGroup className="mt-14 grid gap-6 md:grid-cols-3 [perspective:1400px]">
             {cards.map((c, i) => (
               <StaggerItem key={c.title}>
                 <motion.article
-                  className={`group relative h-full overflow-hidden rounded-3xl border border-transparent bg-soft p-8 shadow-soft transition-colors duration-500 ${c.border}`}
+                  className={`group relative h-full overflow-hidden rounded-3xl border border-border/70 bg-card p-8 shadow-soft transition-colors duration-500 ${c.ring}`}
+                  style={{ transformStyle: "preserve-3d" }}
                   whileHover={{
-                    y: -8,
-                    boxShadow: "0 2px 4px oklch(0.3 0.05 160 / 0.05), 0 24px 60px -20px oklch(0.3 0.05 160 / 0.18)",
+                    rotateX: 6,
+                    rotateY: -8,
+                    y: -10,
+                    boxShadow: "0 2px 4px oklch(0.3 0.05 160 / 0.05), 0 30px 70px -20px oklch(0.3 0.05 160 / 0.25)",
                   }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  transition={{ type: "spring", stiffness: 220, damping: 18 }}
                 >
-                  {/* Rotating background pattern */}
+                  {/* Tinted gradient orb */}
                   <motion.div
                     aria-hidden
-                    className="absolute -right-16 -top-16 h-48 w-48 rounded-full border border-sage-deep/5"
+                    className={`absolute -right-12 -top-12 h-48 w-48 rounded-full bg-gradient-to-br ${c.tint} blur-2xl`}
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 9, repeat: Infinity, delay: i * 1.2 }}
+                  />
+                  {/* Rotating outline ring */}
+                  <motion.div
+                    aria-hidden
+                    className="absolute -right-16 -top-16 h-48 w-48 rounded-full border border-sage-deep/10"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 30 + i * 10, repeat: Infinity, ease: "linear" }}
                   />
-                  <motion.div
-                    className="relative mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-sage-deep shadow-soft"
-                    whileHover={{ rotate: 12, scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                  >
-                    <c.icon className="h-6 w-6" />
-                  </motion.div>
-                  <h3 className="relative text-2xl text-primary">{c.title}</h3>
-                  <p className="relative mt-3 text-pretty leading-relaxed text-foreground/75">
-                    {c.desc}
-                  </p>
+                  <div className="relative" style={{ transform: "translateZ(28px)" }}>
+                    <div className="mb-5 flex items-center gap-3">
+                      <motion.div
+                        className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-2xl shadow-soft"
+                        whileHover={{ rotate: 14, scale: 1.12 }}
+                        transition={{ type: "spring", stiffness: 400 }}
+                      >
+                        <span aria-hidden>{c.emoji}</span>
+                      </motion.div>
+                      <c.icon className="h-5 w-5 text-sage-deep/60" />
+                    </div>
+                    <h3 className="text-2xl text-primary">{c.title}</h3>
+                    <p className="mt-3 text-pretty leading-relaxed text-foreground/75">
+                      {c.desc}
+                    </p>
+                  </div>
+                  <div className="mt-6 h-[2px] w-0 rounded-full bg-gradient-to-r from-sage-deep/40 to-peach/40 transition-all duration-700 group-hover:w-full" />
                 </motion.article>
               </StaggerItem>
             ))}

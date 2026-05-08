@@ -7,9 +7,11 @@ import {
   Features,
   Gamification,
   Parents,
+  Pillars,
   CTA,
   Footer,
 } from "@/components/site/Sections";
+import { ScrollArrowGuide } from "@/components/site/ScrollArrowGuide";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -36,6 +38,7 @@ function Index() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <ScrollArrowGuide />
       <main>
         <Hero />
         <Problem />
@@ -43,6 +46,7 @@ function Index() {
         <Features />
         <Gamification />
         <Parents />
+        <Pillars />
         <CTA />
       </main>
       <Footer />
