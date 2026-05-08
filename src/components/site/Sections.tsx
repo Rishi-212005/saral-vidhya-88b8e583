@@ -93,7 +93,7 @@ export function About() {
   return (
     <>
       <SectionDivider />
-      <section id="about" className="relative py-20 md:py-28">
+      <section id="about" className="relative py-12 md:py-16">
         {/* Decorative background */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <motion.div
@@ -240,7 +240,7 @@ export function Problem() {
   return (
     <>
       <SectionDivider />
-      <section id="problem" className="relative py-12 md:py-20 overflow-hidden bg-gradient-to-b from-transparent via-peach/5 to-transparent">
+      <section id="problem" className="relative py-8 md:py-14 overflow-hidden bg-gradient-to-b from-transparent via-peach/5 to-transparent">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <motion.div
             className="absolute left-0 top-1/3 h-80 w-80 rounded-full bg-peach/10 blur-3xl"
@@ -328,7 +328,7 @@ export function Solution() {
   return (
     <>
       <SectionDivider />
-      <section id="solution" className="relative overflow-hidden py-12 md:py-20 bg-gradient-to-b from-transparent via-sage/8 to-transparent">
+      <section id="solution" className="relative overflow-hidden py-8 md:py-14 bg-gradient-to-b from-transparent via-sage/8 to-transparent">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute left-1/2 top-0 h-72 w-[60rem] -translate-x-1/2 rounded-full bg-sage/15 blur-3xl" />
         </div>
@@ -396,7 +396,7 @@ export function Features() {
   return (
     <>
       <SectionDivider />
-      <section id="features" className="relative py-12 md:py-20 bg-gradient-to-b from-transparent via-sky/8 to-transparent">
+      <section id="features" className="relative py-8 md:py-14 bg-gradient-to-b from-transparent via-sky/8 to-transparent">
         <div className="mx-auto max-w-7xl px-6">
           <SectionHeader
             eyebrow="Features"
@@ -487,7 +487,7 @@ export function Gamification() {
       <SectionDivider />
       <section
         id="gamification"
-        className="relative overflow-hidden py-12 md:py-20 bg-gradient-to-b from-transparent via-sage/8 to-transparent"
+        className="relative overflow-hidden py-8 md:py-14 bg-gradient-to-b from-transparent via-sage/8 to-transparent"
       >
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <motion.div
@@ -623,7 +623,7 @@ export function Parents() {
   return (
     <>
       <SectionDivider />
-      <section id="parents" className="relative py-12 md:py-20 overflow-hidden bg-gradient-to-b from-transparent via-sun/8 to-transparent">
+      <section id="parents" className="relative py-8 md:py-14 overflow-hidden bg-gradient-to-b from-transparent via-sun/8 to-transparent">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <motion.div
             className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-peach/10 blur-3xl"
@@ -721,7 +721,7 @@ export function Pillars() {
   return (
     <>
       <SectionDivider />
-      <section id="pillars" className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-b from-transparent via-sage/8 to-transparent">
+      <section id="pillars" className="relative py-10 md:py-16 overflow-hidden bg-gradient-to-b from-transparent via-sage/8 to-transparent">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <motion.div
             className="absolute left-10 top-10 h-72 w-72 rounded-full bg-sage/10 blur-3xl"
