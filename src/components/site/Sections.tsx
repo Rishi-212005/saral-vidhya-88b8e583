@@ -682,10 +682,31 @@ export function Parents() {
    STRATEGIC PILLARS
    ════════════════════════════════════════════ */
 export function Pillars() {
-  const cards: { icon: LucideIcon; title: string; desc: string; border: string }[] = [
-    { icon: Users, title: "Student-Centered Design", desc: "Every experience is designed around how modern students learn and engage.", border: "hover:border-sage/50" },
-    { icon: Globe2, title: "Accessible Education", desc: "Reducing barriers to quality learning through affordability and adaptability.", border: "hover:border-peach/50" },
-    { icon: ShieldCheck, title: "Privacy & Trust", desc: "Built with responsible practices, secure systems, and learner-focused integrity.", border: "hover:border-sky/50" },
+  const cards: { emoji: string; icon: LucideIcon; title: string; desc: string; tint: string; ring: string }[] = [
+    {
+      emoji: "🧠",
+      icon: Brain,
+      title: "Student Psychology",
+      desc: 'Content and UI/UX developed in consultation with student psychologists to suit the needs of "Gen Z / Alpha" learners.',
+      tint: "from-sage/30 via-sage/10 to-transparent",
+      ring: "hover:border-sage/60",
+    },
+    {
+      emoji: "💰",
+      icon: Wallet,
+      title: "Replacement for Tuitions",
+      desc: "A cost-effective alternative that reduces expenses for parents and saves students time and effort",
+      tint: "from-peach/40 via-peach/10 to-transparent",
+      ring: "hover:border-peach/60",
+    },
+    {
+      emoji: "🔒",
+      icon: ShieldCheck,
+      title: "Compliance & Privacy",
+      desc: 'Strictly sticking to syllabus requirements with "private-to-customer" data models and legal compliance.',
+      tint: "from-sky/40 via-sky/10 to-transparent",
+      ring: "hover:border-sky/60",
+    },
   ];
   return (
     <>
