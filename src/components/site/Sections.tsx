@@ -447,29 +447,25 @@ export function Gamification() {
     {
       icon: Trophy,
       title: "Dynamic Calibration",
-      desc: "Personas auto-upgrade or downgrade based on real-time learning and performance.",
-      back: "Adaptive AI keeps every learner in their ideal challenge zone — never too hard, never too easy.",
+      desc: "The system automatically upgrades or downgrades students' subject-wise personas based on real-time learning and performance.",
       tint: "from-sage/40 to-sage/10",
     },
     {
       icon: Sparkles,
       title: "Gamified Experience",
-      desc: "Leaderboards and badges that foster healthy competition and deeper engagement.",
-      back: "Earn streaks, climb ranks, and unlock badges that make daily practice genuinely fun.",
+      desc: "Student leaderboards and badges designed to foster healthy competition and greater engagement with learning content.",
       tint: "from-peach/50 to-peach/10",
     },
     {
       icon: HeartHandshake,
       title: "Balanced Usage",
-      desc: "Designed for 6–8 hours per week — maximum impact, zero screen-time fatigue.",
-      back: "Smart pacing nudges and break prompts keep learning healthy and sustainable.",
+      desc: "Designed for 6–8 hours per week to maximize learning impact while avoiding screen time fatigue.",
       tint: "from-sky/50 to-sky/10",
     },
     {
       icon: ShieldCheck,
       title: "Inclusive Design",
-      desc: "Specialized models for students with special needs — accessibility for all.",
-      back: "Voice, captions, dyslexia-friendly typography, and adaptive contrast built in.",
+      desc: "Specialized models for students with special needs, ensuring accessibility for all.",
       tint: "from-sun/50 to-sun/10",
     },
   ];
