@@ -440,43 +440,188 @@ export function Features() {
 }
 
 /* ════════════════════════════════════════════
-   GAMIFICATION
+   GAMIFICATION  (dark themed card — matches screenshot exactly)
    ════════════════════════════════════════════ */
 export function Gamification() {
+  const bullets = [
+    {
+      title: "Dynamic Calibration:",
+      desc: "The system automatically upgrades or downgrades students' subject-wise personas based on real-time learning and performance.",
+    },
+    {
+      title: "Gamified Experience:",
+      desc: "Student leaderboards and badges designed to foster healthy competition and greater engagement with learning content",
+    },
+    {
+      title: "Balanced Usage:",
+      desc: "Designed for 6–8 hours per week to maximize learning impact while avoiding screen time fatigue.",
+    },
+    {
+      title: "Inclusive Design:",
+      desc: "Specialized models for students with special needs, ensuring accessibility for all.",
+    },
+  ];
+
   return (
     <>
       <SectionDivider />
-      <section id="gamification" className="relative py-12 md:py-20 overflow-hidden bg-gradient-to-b from-transparent via-sky/8 to-transparent">
+      <section
+        id="gamification"
+        className="relative py-16 md:py-24 overflow-hidden"
+        style={{
+          background:
+            "radial-gradient(ellipse at top left, oklch(0.32 0.12 290 / 0.55), transparent 55%), radial-gradient(ellipse at bottom right, oklch(0.45 0.15 220 / 0.35), transparent 55%), linear-gradient(180deg, oklch(0.18 0.08 280), oklch(0.14 0.06 270))",
+        }}
+      >
+        {/* Floating orbs */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <motion.div
-            className="absolute left-1/4 top-1/3 h-96 w-96 rounded-full bg-sky/10 blur-3xl"
-            animate={{ x: [0, 20, 0], y: [0, 30, 0] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute left-[8%] top-[12%] h-72 w-72 rounded-full blur-3xl"
+            style={{ background: "oklch(0.55 0.22 290 / 0.25)" }}
+            animate={{ x: [0, 30, 0], y: [0, 20, 0], scale: [1, 1.1, 1] }}
+            transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
           />
+          <motion.div
+            className="absolute right-[6%] bottom-[8%] h-80 w-80 rounded-full blur-3xl"
+            style={{ background: "oklch(0.65 0.18 210 / 0.22)" }}
+            animate={{ x: [0, -40, 0], y: [0, -20, 0], scale: [1, 1.15, 1] }}
+            transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+          />
+          {/* Paper-cut floating shapes */}
+          <motion.svg
+            className="absolute left-1/2 top-6 h-24 w-24 opacity-30"
+            viewBox="0 0 100 100"
+            animate={{ rotate: 360, y: [0, 12, 0] }}
+            transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+          >
+            <polygon points="50,5 61,38 95,38 67,58 78,92 50,72 22,92 33,58 5,38 39,38" fill="oklch(0.7 0.18 210)" />
+          </motion.svg>
         </div>
 
-        <div className="relative mx-auto max-w-6xl px-4">
-          <SectionHeader
-            eyebrow="UNIQUE SELLING PROPOSITIONS"
-            title="Gamification"
-            subtitle="Interactive learning that keeps students engaged and motivated"
-          />
+        <div className="relative mx-auto max-w-6xl px-6">
+          <Reveal>
+            <div
+              className="relative overflow-hidden rounded-3xl border p-8 md:p-12"
+              style={{
+                background:
+                  "linear-gradient(135deg, oklch(0.22 0.08 285 / 0.85), oklch(0.18 0.06 270 / 0.85))",
+                borderColor: "oklch(0.55 0.18 290 / 0.35)",
+                boxShadow:
+                  "0 30px 80px -20px oklch(0.2 0.15 280 / 0.6), inset 0 1px 0 oklch(0.7 0.2 290 / 0.15)",
+              }}
+            >
+              <div className="grid items-center gap-10 md:grid-cols-[1.4fr_1fr]">
+                {/* Left: bullets */}
+                <div>
+                  <motion.h2
+                    className="text-4xl md:text-5xl font-extrabold"
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      background:
+                        "linear-gradient(90deg, oklch(0.7 0.22 295), oklch(0.65 0.2 280))",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                  >
+                    Gamification
+                  </motion.h2>
 
-          {/* Gamification visual with animations */}
-          <Reveal className="mt-12 relative">
-            <div className="relative mx-auto max-w-5xl overflow-hidden rounded-2xl shadow-soft bg-card">
-              <picture>
-                <source srcSet="/gamification.png" type="image/png" />
-                <source srcSet="/gamification.jpg" type="image/jpeg" />
-                <source srcSet="/gamification-enhanced.svg" type="image/svg+xml" />
-                <img src="/gamification.svg" alt="Gamification - Dynamic Calibration, Gamified Experience, Balanced Usage, Inclusive Design" className="w-full h-auto object-cover" />
-              </picture>
-              <PaperCutOverlay />
+                  <ul className="mt-8 space-y-5">
+                    {bullets.map((b, i) => (
+                      <motion.li
+                        key={b.title}
+                        className="flex items-start gap-3"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 + i * 0.12, duration: 0.6 }}
+                      >
+                        <span
+                          className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, oklch(0.7 0.18 210), oklch(0.6 0.2 230))",
+                            boxShadow: "0 0 12px oklch(0.7 0.18 210 / 0.6)",
+                          }}
+                        >
+                          <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="white" strokeWidth="3">
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                        </span>
+                        <p className="text-pretty leading-relaxed text-white/90">
+                          <span className="font-bold text-white">{b.title}</span>{" "}
+                          <span className="text-white/75">{b.desc}</span>
+                        </p>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Right: Level Up badge */}
+                <Reveal variant="scaleIn" className="flex items-center justify-center">
+                  <div className="relative h-64 w-64">
+                    {/* Rotating outer ring */}
+                    <motion.svg
+                      className="absolute inset-0 h-full w-full"
+                      viewBox="0 0 200 200"
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+                    >
+                      <defs>
+                        <linearGradient id="ringGrad" x1="0" x2="1" y1="0" y2="1">
+                          <stop offset="0%" stopColor="oklch(0.65 0.22 290)" />
+                          <stop offset="50%" stopColor="oklch(0.7 0.18 240)" />
+                          <stop offset="100%" stopColor="oklch(0.7 0.18 210)" />
+                        </linearGradient>
+                      </defs>
+                      <circle
+                        cx="100"
+                        cy="100"
+                        r="92"
+                        fill="none"
+                        stroke="url(#ringGrad)"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        strokeDasharray="430 580"
+                      />
+                    </motion.svg>
+
+                    {/* Pulsing glow */}
+                    <motion.div
+                      className="absolute inset-4 rounded-full"
+                      style={{
+                        background:
+                          "radial-gradient(circle, oklch(0.55 0.22 280 / 0.5), transparent 70%)",
+                      }}
+                      animate={{ scale: [1, 1.1, 1], opacity: [0.6, 1, 0.6] }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                    />
+
+                    {/* Inner badge */}
+                    <div
+                      className="absolute inset-12 flex items-center justify-center rounded-full"
+                      style={{
+                        background:
+                          "radial-gradient(circle at 30% 30%, oklch(0.2 0.08 280), oklch(0.1 0.05 270))",
+                        boxShadow:
+                          "inset 0 2px 8px oklch(0.7 0.2 290 / 0.3), 0 12px 30px oklch(0.1 0.1 280 / 0.6)",
+                        border: "2px solid oklch(0.6 0.2 280 / 0.5)",
+                      }}
+                    >
+                      <span
+                        className="text-2xl font-extrabold tracking-wide text-white"
+                        style={{ fontFamily: "var(--font-sans)" }}
+                      >
+                        Level Up
+                      </span>
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
             </div>
-
-            {/* Add decorative animations */}
-            <ArrowRocket targetId="gamification" />
-            <Book3D sections={["about", "problem", "solution", "features", "gamification", "parents"]} />
           </Reveal>
         </div>
       </section>
