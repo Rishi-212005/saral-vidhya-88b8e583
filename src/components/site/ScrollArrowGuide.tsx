@@ -34,7 +34,7 @@ export function ScrollArrowGuide({
       const ax = rect.left + rect.width / 2;
       const ay = rect.top + rect.height / 2;
 
-      let best: { dist: number; el: HTMLElement } | null = null;
+      let best: { dist: number; el: HTMLElement } | null = null as { dist: number; el: HTMLElement } | null;
       sectionIds.forEach((id) => {
         const el = document.getElementById(id);
         if (!el) return;
