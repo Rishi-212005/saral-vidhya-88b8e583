@@ -7,9 +7,11 @@ import {
   Features,
   Gamification,
   Parents,
+  Pillars,
   CTA,
   Footer,
 } from "@/components/site/Sections";
+import { ScrollArrowGuide } from "@/components/site/ScrollArrowGuide";
 
 export const Route = createFileRoute("/")({
   head: () => ({
