@@ -498,45 +498,24 @@ export function Gamification() {
           />
 
           <div className="mt-12 grid items-center gap-10 md:grid-cols-[1.4fr_1fr]">
-            {/* 3D flip cards */}
+            {/* 3D tilt cards */}
             <StaggerGroup className="grid gap-5 sm:grid-cols-2">
               {cards.map((c) => (
                 <StaggerItem key={c.title}>
-                  <div className="group h-44 [perspective:1200px]">
+                  <div className="group [perspective:1200px]">
                     <motion.div
-                      className="relative h-full w-full rounded-3xl"
+                      className={`relative overflow-hidden rounded-3xl border border-border/70 bg-gradient-to-br ${c.tint} bg-card p-6 shadow-soft min-h-[15rem]`}
+                      whileHover={{ rotateX: 4, rotateY: -6, y: -4 }}
+                      transition={{ type: "spring", stiffness: 180, damping: 14 }}
                       style={{ transformStyle: "preserve-3d" }}
-                      whileHover={{ rotateY: 180 }}
-                      transition={{ type: "spring", stiffness: 120, damping: 16 }}
                     >
-                      {/* Front */}
-                      <div
-                        className={`absolute inset-0 overflow-hidden rounded-3xl border border-border/70 bg-gradient-to-br ${c.tint} bg-card p-6 shadow-soft`}
-                        style={{ backfaceVisibility: "hidden" }}
-                      >
-                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-sage-deep shadow-soft">
-                          <c.icon className="h-5 w-5" />
-                        </div>
-                        <h3 className="mt-4 text-xl text-primary">{c.title}</h3>
-                        <p className="mt-2 text-sm leading-relaxed text-foreground/75">
-                          {c.desc}
-                        </p>
+                      <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-sage-deep shadow-soft">
+                        <c.icon className="h-5 w-5" />
                       </div>
-                      {/* Back */}
-                      <div
-                        className="absolute inset-0 flex flex-col justify-center rounded-3xl border border-sage-deep/30 bg-cta p-6 text-primary-foreground shadow-lift"
-                        style={{
-                          backfaceVisibility: "hidden",
-                          transform: "rotateY(180deg)",
-                        }}
-                      >
-                        <div className="text-xs font-medium uppercase tracking-[0.22em] opacity-80">
-                          {c.title}
-                        </div>
-                        <p className="mt-3 text-pretty text-base leading-relaxed">
-                          {c.back}
-                        </p>
-                      </div>
+                      <h3 className="mt-4 text-xl text-primary">{c.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-foreground/75">
+                        {c.desc}
+                      </p>
                     </motion.div>
                   </div>
                 </StaggerItem>
