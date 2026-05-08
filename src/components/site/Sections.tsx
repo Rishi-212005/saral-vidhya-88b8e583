@@ -448,37 +448,24 @@ export function Features() {
 }
 
 /* ════════════════════════════════════════════
-   GAMIFICATION  (on-theme + 3D flip cards + 3D Level-Up badge)
+   COMPETITIVE BY DESIGN  (replaces Gamification, keeps rotating badge)
    ════════════════════════════════════════════ */
 export function Gamification() {
-  const cards = [
+  const items = [
     {
-      icon: Trophy,
+      num: "01",
       title: "Dynamic Calibration",
       desc: "The system automatically upgrades or downgrades students' subject-wise personas based on real-time learning and performance.",
-      back: "Adaptive AI keeps every learner in their ideal challenge zone — never too hard, never too easy.",
-      tint: "from-sage/40 to-sage/10",
     },
     {
-      icon: Sparkles,
-      title: "Gamified Experience",
-      desc: "Student leaderboards and badges designed to foster healthy competition and greater engagement with learning content.",
-      back: "Earn streaks, climb ranks, and unlock badges that make daily practice genuinely fun.",
-      tint: "from-peach/50 to-peach/10",
+      num: "02",
+      title: "Competitive Experience",
+      desc: "Student leaderboards and badges designed to foster competition and greater engagement with learning content.",
     },
     {
-      icon: HeartHandshake,
+      num: "03",
       title: "Balanced Usage",
-      desc: "Designed for 6–8 hours per week to maximize learning impact while avoiding screen time fatigue.",
-      back: "Smart pacing nudges and break prompts keep learning healthy and sustainable.",
-      tint: "from-sky/50 to-sky/10",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Inclusive Design",
-      desc: "Specialized models for students with special needs, ensuring accessibility for all.",
-      back: "Voice, captions, dyslexia-friendly typography, and adaptive contrast built in.",
-      tint: "from-sun/50 to-sun/10",
+      desc: "Designed for 8-10 hours per week to maximize learning.",
     },
   ];
 
@@ -505,60 +492,43 @@ export function Gamification() {
         <div className="relative mx-auto max-w-6xl px-6">
           <SectionHeader
             eyebrow="Unique Selling Propositions"
-            title="Gamification"
-            subtitle="Learning that levels up with every student."
+            title="Competitive by Design"
+            subtitle="Adaptive, motivating, and balanced — built to keep every learner thriving."
           />
 
-          <div className="mt-12 grid items-center gap-10 md:grid-cols-[1.4fr_1fr]">
-            {/* 3D flip cards */}
-            <StaggerGroup className="grid gap-4 sm:grid-cols-2">
-              {cards.map((c) => (
-                <StaggerItem key={c.title}>
-                  <div className="group h-72 [perspective:1200px]">
-                    <motion.div
-                      className="relative h-full w-full rounded-3xl"
-                      style={{ transformStyle: "preserve-3d" }}
-                      whileHover={{ rotateY: 180 }}
-                      transition={{ type: "spring", stiffness: 120, damping: 16 }}
-                    >
-                      {/* Front */}
-                      <div
-                        className={`absolute inset-0 overflow-hidden rounded-3xl border border-border/70 bg-gradient-to-br ${c.tint} bg-card p-7 shadow-soft`}
-                        style={{ backfaceVisibility: "hidden" }}
-                      >
-                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-sage-deep shadow-soft">
-                          <c.icon className="h-6 w-6" />
-                        </div>
-                        <h3 className="mt-4 text-2xl text-primary">{c.title}</h3>
-                        <p className="mt-2 text-base leading-relaxed text-foreground/80">
-                          {c.desc}
-                        </p>
-                      </div>
-                      {/* Back */}
-                      <div
-                        className="absolute inset-0 flex flex-col justify-center rounded-3xl border border-sage-deep/30 bg-cta p-7 text-primary-foreground shadow-lift"
-                        style={{
-                          backfaceVisibility: "hidden",
-                          transform: "rotateY(180deg)",
-                        }}
-                      >
-                        <div className="text-xs font-medium uppercase tracking-[0.22em] opacity-80">
-                          {c.title}
-                        </div>
-                        <p className="mt-3 text-pretty text-lg leading-relaxed">
-                          {c.back}
-                        </p>
-                      </div>
-                    </motion.div>
-                  </div>
+          <div className="mt-12 grid items-center gap-12 md:grid-cols-[1.4fr_1fr]">
+            {/* Numbered list cards */}
+            <StaggerGroup className="space-y-5">
+              {items.map((it, i) => (
+                <StaggerItem key={it.title}>
+                  <motion.div
+                    className="group relative overflow-hidden rounded-3xl border border-border/70 bg-card p-7 shadow-soft cursor-default"
+                    style={{ transformStyle: "preserve-3d" }}
+                    whileHover={{
+                      y: -6,
+                      rotateY: 4,
+                      rotateX: -3,
+                      boxShadow:
+                        "0 2px 4px oklch(0.3 0.05 160 / 0.05), 0 30px 70px -20px oklch(0.3 0.05 160 / 0.22)",
+                    }}
+                    transition={{ type: "spring", stiffness: 240, damping: 18 }}
+                  >
+                    <div className="text-xs font-medium tracking-[0.22em] text-sage-deep/60">
+                      {it.num}
+                    </div>
+                    <div className="mt-2 h-[1px] w-full bg-gradient-to-r from-sage-deep/30 via-peach/30 to-transparent" />
+                    <h3 className="mt-4 text-2xl text-primary md:text-3xl">{it.title}</h3>
+                    <p className="mt-2 text-base leading-relaxed text-foreground/75 md:text-lg">
+                      {it.desc}
+                    </p>
+                  </motion.div>
                 </StaggerItem>
               ))}
             </StaggerGroup>
 
-            {/* 3D Level Up badge */}
+            {/* Rotating badge — kept animation, renamed */}
             <Reveal variant="scaleIn" className="flex items-center justify-center">
               <div className="relative h-64 w-64 [perspective:1000px]">
-                {/* Outer rotating ring */}
                 <motion.div
                   className="absolute inset-0 rounded-full border-[6px] border-transparent"
                   style={{
@@ -569,7 +539,6 @@ export function Gamification() {
                   animate={{ rotate: 360 }}
                   transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
                 />
-                {/* Inner 3D coin */}
                 <motion.div
                   className="absolute inset-6 rounded-full bg-gradient-to-br from-white to-cream shadow-lift"
                   style={{ transformStyle: "preserve-3d" }}
@@ -582,7 +551,7 @@ export function Gamification() {
                   >
                     <Trophy className="h-10 w-10 text-sage-deep" />
                     <div className="mt-2 font-display text-2xl text-primary">
-                      Level Up
+                      Rank Up
                     </div>
                   </div>
                   <div
@@ -595,7 +564,6 @@ export function Gamification() {
                     <Sparkles className="h-12 w-12" />
                   </div>
                 </motion.div>
-                {/* Pulsing glow */}
                 <motion.div
                   aria-hidden
                   className="absolute -inset-4 -z-10 rounded-full bg-sage/30 blur-3xl"
@@ -608,6 +576,46 @@ export function Gamification() {
         </div>
       </section>
     </>
+  );
+}
+
+/* ─── Rotating Diamond Badge (re-usable, inspired by 4th visual) ─── */
+function RotatingDiamondBadge({ icon: Icon, label }: { icon: LucideIcon; label: string }) {
+  return (
+    <div className="relative h-64 w-56 [perspective:1000px]">
+      {/* Rotating diamond frame */}
+      <motion.div
+        aria-hidden
+        className="absolute inset-0 flex items-center justify-center"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+      >
+        <div
+          className="h-44 w-44 border-[2px] rotate-45"
+          style={{
+            borderImage:
+              "linear-gradient(135deg, var(--sage-deep), var(--peach), var(--sage-deep)) 1",
+          }}
+        />
+      </motion.div>
+      {/* Soft glow */}
+      <motion.div
+        aria-hidden
+        className="absolute inset-6 -z-10 rounded-full bg-sage/25 blur-3xl"
+        animate={{ opacity: [0.4, 0.75, 0.4], scale: [1, 1.08, 1] }}
+        transition={{ duration: 5, repeat: Infinity }}
+      />
+      {/* Center oval card */}
+      <motion.div
+        className="absolute left-1/2 top-1/2 flex h-36 w-28 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-[50%] bg-gradient-to-br from-white to-cream shadow-lift"
+        animate={{ y: [0, -6, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        whileHover={{ scale: 1.06 }}
+      >
+        <Icon className="h-7 w-7 text-sage-deep" />
+        <div className="mt-2 font-display text-base text-primary">{label}</div>
+      </motion.div>
+    </div>
   );
 }
 
