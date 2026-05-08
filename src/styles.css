@@ -1,0 +1,188 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-sage: var(--sage);
+  --color-sage-deep: var(--sage-deep);
+  --color-peach: var(--peach);
+  --color-cream: var(--cream);
+  --color-sky: var(--sky);
+  --color-sun: var(--sun);
+
+  --font-display: "Fraunces", "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Soft warm cream / educational palette inspired by the Saral Vidhya logo */
+  --background: oklch(0.985 0.008 95);
+  --foreground: oklch(0.28 0.04 160);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.28 0.04 160);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.28 0.04 160);
+
+  --primary: oklch(0.42 0.07 160);            /* deep sage green (logo text) */
+  --primary-foreground: oklch(0.985 0.01 95);
+
+  --secondary: oklch(0.94 0.02 130);
+  --secondary-foreground: oklch(0.32 0.05 160);
+
+  --muted: oklch(0.95 0.012 100);
+  --muted-foreground: oklch(0.5 0.02 150);
+
+  --accent: oklch(0.82 0.08 50);              /* soft peach */
+  --accent-foreground: oklch(0.3 0.05 40);
+
+  --destructive: oklch(0.62 0.2 25);
+  --destructive-foreground: oklch(0.985 0.01 95);
+
+  --border: oklch(0.9 0.015 120);
+  --input: oklch(0.92 0.015 120);
+  --ring: oklch(0.62 0.06 160);
+
+  /* Brand custom tokens */
+  --sage: oklch(0.78 0.06 155);
+  --sage-deep: oklch(0.42 0.07 160);
+  --peach: oklch(0.82 0.08 50);
+  --cream: oklch(0.965 0.018 95);
+  --sky: oklch(0.82 0.05 220);
+  --sun: oklch(0.85 0.13 90);
+
+  --gradient-hero: radial-gradient(ellipse at top, oklch(0.95 0.04 145 / 0.7), transparent 60%),
+                   radial-gradient(ellipse at bottom right, oklch(0.9 0.06 50 / 0.35), transparent 55%),
+                   linear-gradient(180deg, oklch(0.98 0.012 95), oklch(0.96 0.018 110));
+  --gradient-soft: linear-gradient(135deg, oklch(0.96 0.025 145), oklch(0.97 0.03 60));
+  --gradient-cta:  linear-gradient(135deg, oklch(0.45 0.07 160), oklch(0.55 0.08 170));
+
+  --shadow-soft: 0 1px 2px oklch(0.3 0.05 160 / 0.04), 0 8px 30px oklch(0.3 0.05 160 / 0.06);
+  --shadow-lift: 0 2px 4px oklch(0.3 0.05 160 / 0.05), 0 24px 60px -20px oklch(0.3 0.05 160 / 0.18);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-weight: 500;
+  }
+}
+
+@layer utilities {
+  .bg-hero { background: var(--gradient-hero); }
+  .bg-soft { background: var(--gradient-soft); }
+  .bg-cta  { background: var(--gradient-cta); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-lift { box-shadow: var(--shadow-lift); }
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  .glass {
+    background: color-mix(in oklab, white 65%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid color-mix(in oklab, white 60%, transparent);
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    33% { transform: translateY(-18px) translateX(8px); }
+    66% { transform: translateY(8px) translateX(-6px); }
+  }
+  .animate-float-slow { animation: float-slow 9s ease-in-out infinite; }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  .animate-gradient { background-size: 200% 200%; animation: gradient-shift 12s ease infinite; }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%) skewX(-15deg); }
+    100% { transform: translateX(200%) skewX(-15deg); }
+  }
+  .animate-shimmer { animation: shimmer 3s ease-in-out infinite; }
+
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+  }
+  .animate-pulse-soft { animation: pulse-soft 4s ease-in-out infinite; }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin-slow { animation: spin-slow 30s linear infinite; }
+  /* Decorations */
+  .arrow-launch {
+    will-change: transform, opacity;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.12));
+  }
+  .page-fill-anim::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 10% 20%, rgba(107,33,168,0.03), transparent 8%), radial-gradient(circle at 90% 80%, rgba(6,182,212,0.02), transparent 12%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .paper-cut {
+    mix-blend-mode: overlay;
+    opacity: 0.04;
+  }
+
+  /* Book 3D */
+  .perspective-1000 { perspective: 1000px; }
+  .book-3d-container { transform-style: preserve-3d; perspective: 1000px; }
+  .book-3d-container > div { backface-visibility: hidden; }
+  .book-3d-container .page { box-shadow: 0 12px 30px rgba(2,6,23,0.35); border-radius: 4px; }
+  .book-3d-container .page::before { 
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent 60%);
+    border-radius: 4px;
+  }
+}
