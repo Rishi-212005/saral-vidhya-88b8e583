@@ -256,16 +256,19 @@ export function Problem() {
             subtitle="Traditional systems are failing our students by imposing rigid formats and ignoring individual learning curves."
           />
 
-          <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-2">
+          <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-2 [perspective:1400px]">
             {cards.map((c, i) => (
               <StaggerItem key={c.title}>
                 <motion.article
                   className="group relative h-full overflow-hidden rounded-3xl border border-border/70 bg-card p-8 shadow-soft"
+                  style={{ transformStyle: "preserve-3d" }}
                   whileHover={{
-                    y: -8,
-                    boxShadow: "0 2px 4px oklch(0.3 0.05 160 / 0.05), 0 24px 60px -20px oklch(0.3 0.05 160 / 0.18)",
+                    rotateX: 6,
+                    rotateY: i % 2 === 0 ? -8 : 8,
+                    y: -10,
+                    boxShadow: "0 2px 4px oklch(0.3 0.05 160 / 0.05), 0 30px 70px -20px oklch(0.3 0.05 160 / 0.25)",
                   }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  transition={{ type: "spring", stiffness: 220, damping: 18 }}
                 >
                   {/* Hover glow */}
                   <div
