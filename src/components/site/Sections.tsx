@@ -748,6 +748,10 @@ export function Pillars() {
             title="Strategic Pillars"
           />
 
+          <div className="mt-10 flex justify-center">
+            <RotatingDiamondBadge icon={Target} label="Achieve" />
+          </div>
+
           <StaggerGroup className="mt-14 grid gap-6 md:grid-cols-3 [perspective:1400px]">
             {cards.map((c, i) => (
               <StaggerItem key={c.title}>
