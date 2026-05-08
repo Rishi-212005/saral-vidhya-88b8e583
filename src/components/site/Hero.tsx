@@ -300,30 +300,6 @@ export function Hero() {
               </motion.a>
             </motion.div>
 
-            {/* Trust indicators */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.8 }}
-              className="mt-8 flex items-center gap-6"
-            >
-              {[
-                { num: "10K+", label: "Students" },
-                { num: "50+", label: "Courses" },
-                { num: "4.9", label: "Rating" },
-              ].map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  className="text-center"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1 + i * 0.15 }}
-                >
-                  <div className="text-lg font-semibold text-primary">{stat.num}</div>
-                  <div className="text-[10px] uppercase tracking-[0.18em] text-foreground/50">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
           </div>
         </div>
       </motion.div>
