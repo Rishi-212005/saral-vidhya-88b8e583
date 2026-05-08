@@ -448,24 +448,28 @@ export function Gamification() {
       icon: Trophy,
       title: "Dynamic Calibration",
       desc: "The system automatically upgrades or downgrades students' subject-wise personas based on real-time learning and performance.",
+      back: "Adaptive AI keeps every learner in their ideal challenge zone — never too hard, never too easy.",
       tint: "from-sage/40 to-sage/10",
     },
     {
       icon: Sparkles,
       title: "Gamified Experience",
       desc: "Student leaderboards and badges designed to foster healthy competition and greater engagement with learning content.",
+      back: "Earn streaks, climb ranks, and unlock badges that make daily practice genuinely fun.",
       tint: "from-peach/50 to-peach/10",
     },
     {
       icon: HeartHandshake,
       title: "Balanced Usage",
       desc: "Designed for 6–8 hours per week to maximize learning impact while avoiding screen time fatigue.",
+      back: "Smart pacing nudges and break prompts keep learning healthy and sustainable.",
       tint: "from-sky/50 to-sky/10",
     },
     {
       icon: ShieldCheck,
       title: "Inclusive Design",
       desc: "Specialized models for students with special needs, ensuring accessibility for all.",
+      back: "Voice, captions, dyslexia-friendly typography, and adaptive contrast built in.",
       tint: "from-sun/50 to-sun/10",
     },
   ];
@@ -498,24 +502,45 @@ export function Gamification() {
           />
 
           <div className="mt-12 grid items-center gap-10 md:grid-cols-[1.4fr_1fr]">
-            {/* 3D tilt cards */}
+            {/* 3D flip cards */}
             <StaggerGroup className="grid gap-5 sm:grid-cols-2">
               {cards.map((c) => (
                 <StaggerItem key={c.title}>
-                  <div className="group [perspective:1200px]">
+                  <div className="group h-60 [perspective:1200px]">
                     <motion.div
-                      className={`relative overflow-hidden rounded-3xl border border-border/70 bg-gradient-to-br ${c.tint} bg-card p-6 shadow-soft min-h-[15rem]`}
-                      whileHover={{ rotateX: 4, rotateY: -6, y: -4 }}
-                      transition={{ type: "spring", stiffness: 180, damping: 14 }}
+                      className="relative h-full w-full rounded-3xl"
                       style={{ transformStyle: "preserve-3d" }}
+                      whileHover={{ rotateY: 180 }}
+                      transition={{ type: "spring", stiffness: 120, damping: 16 }}
                     >
-                      <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-sage-deep shadow-soft">
-                        <c.icon className="h-5 w-5" />
+                      {/* Front */}
+                      <div
+                        className={`absolute inset-0 overflow-hidden rounded-3xl border border-border/70 bg-gradient-to-br ${c.tint} bg-card p-6 shadow-soft`}
+                        style={{ backfaceVisibility: "hidden" }}
+                      >
+                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-sage-deep shadow-soft">
+                          <c.icon className="h-5 w-5" />
+                        </div>
+                        <h3 className="mt-4 text-xl text-primary">{c.title}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-foreground/75">
+                          {c.desc}
+                        </p>
                       </div>
-                      <h3 className="mt-4 text-xl text-primary">{c.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-foreground/75">
-                        {c.desc}
-                      </p>
+                      {/* Back */}
+                      <div
+                        className="absolute inset-0 flex flex-col justify-center rounded-3xl border border-sage-deep/30 bg-cta p-6 text-primary-foreground shadow-lift"
+                        style={{
+                          backfaceVisibility: "hidden",
+                          transform: "rotateY(180deg)",
+                        }}
+                      >
+                        <div className="text-xs font-medium uppercase tracking-[0.22em] opacity-80">
+                          {c.title}
+                        </div>
+                        <p className="mt-3 text-pretty text-base leading-relaxed">
+                          {c.back}
+                        </p>
+                      </div>
                     </motion.div>
                   </div>
                 </StaggerItem>
