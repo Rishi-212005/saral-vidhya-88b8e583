@@ -579,42 +579,49 @@ export function Gamification() {
   );
 }
 
-/* ─── Rotating Diamond Badge (re-usable, inspired by 4th visual) ─── */
+/* ─── Rotating Circular Badge (mirrors Rank Up animation, reusable) ─── */
 function RotatingDiamondBadge({ icon: Icon, label }: { icon: LucideIcon; label: string }) {
   return (
-    <div className="relative h-32 w-32 shrink-0 [perspective:800px]">
-      {/* Rotating diamond frame */}
+    <div className="relative h-56 w-56 md:h-64 md:w-64 [perspective:1000px]">
       <motion.div
-        aria-hidden
-        className="absolute inset-0 flex items-center justify-center"
+        className="absolute inset-0 rounded-full border-[6px] border-transparent"
+        style={{
+          borderImage:
+            "linear-gradient(135deg, var(--sage-deep), var(--peach), var(--sage-deep)) 1",
+          borderRadius: "9999px",
+        }}
         animate={{ rotate: 360 }}
-        transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+      />
+      <motion.div
+        className="absolute inset-6 rounded-full bg-gradient-to-br from-white to-cream shadow-lift"
+        style={{ transformStyle: "preserve-3d" }}
+        animate={{ rotateY: [0, 360] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "linear" }}
       >
         <div
-          className="h-24 w-24 border-[2px] rotate-45"
+          className="absolute inset-0 flex flex-col items-center justify-center rounded-full"
+          style={{ backfaceVisibility: "hidden" }}
+        >
+          <Icon className="h-10 w-10 text-sage-deep" />
+          <div className="mt-2 font-display text-2xl text-primary">{label}</div>
+        </div>
+        <div
+          className="absolute inset-0 flex items-center justify-center rounded-full bg-cta text-primary-foreground"
           style={{
-            borderImage:
-              "linear-gradient(135deg, var(--sage-deep), var(--peach), var(--sage-deep)) 1",
+            backfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
           }}
-        />
+        >
+          <Sparkles className="h-12 w-12" />
+        </div>
       </motion.div>
-      {/* Soft glow */}
       <motion.div
         aria-hidden
-        className="absolute inset-3 -z-10 rounded-full bg-sage/25 blur-2xl"
-        animate={{ opacity: [0.4, 0.75, 0.4], scale: [1, 1.08, 1] }}
-        transition={{ duration: 5, repeat: Infinity }}
+        className="absolute -inset-4 -z-10 rounded-full bg-sage/30 blur-3xl"
+        animate={{ opacity: [0.4, 0.8, 0.4], scale: [1, 1.08, 1] }}
+        transition={{ duration: 4, repeat: Infinity }}
       />
-      {/* Center oval card */}
-      <motion.div
-        className="absolute left-1/2 top-1/2 flex h-20 w-16 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-[50%] bg-gradient-to-br from-white to-cream shadow-lift"
-        animate={{ y: [0, -4, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        whileHover={{ scale: 1.06 }}
-      >
-        <Icon className="h-4 w-4 text-sage-deep" />
-        <div className="mt-1 font-display text-[11px] text-primary">{label}</div>
-      </motion.div>
     </div>
   );
 }
@@ -743,12 +750,16 @@ export function Pillars() {
           />
         </div>
         <div className="relative mx-auto max-w-7xl px-6">
-          <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-8">
+          <div className="grid items-center gap-10 md:grid-cols-[1.6fr_1fr]">
             <SectionHeader
               eyebrow="Why It Matters"
               title="Strategic Pillars"
+              subtitle="Three foundational commitments that keep Saral Vidhya focused, trustworthy, and built for every learner."
+              align="left"
             />
-            <RotatingDiamondBadge icon={Target} label="Achieve" />
+            <Reveal variant="scaleIn" className="flex items-center justify-center md:justify-end">
+              <RotatingDiamondBadge icon={Target} label="Achieve" />
+            </Reveal>
           </div>
 
           <StaggerGroup className="mt-10 grid gap-6 md:grid-cols-3 [perspective:1400px]">
@@ -816,7 +827,7 @@ export function CTA() {
       <section id="cta" className="relative py-20 md:py-24">
         <div className="mx-auto max-w-6xl px-6">
           <Reveal variant="scaleIn">
-            <div className="relative overflow-hidden rounded-[2rem] bg-cta animate-gradient px-8 py-20 text-center shadow-lift md:px-16 md:py-28">
+            <div className="relative overflow-hidden rounded-[2rem] bg-cta animate-gradient px-8 py-16 shadow-lift md:px-14 md:py-20">
               <div aria-hidden className="pointer-events-none absolute inset-0">
                 <motion.div
                   className="absolute left-10 top-10 h-40 w-40 rounded-full bg-white/10 blur-3xl"
@@ -828,52 +839,82 @@ export function CTA() {
                   animate={{ x: [0, -30, 0], y: [0, 20, 0] }}
                   transition={{ duration: 15, repeat: Infinity }}
                 />
-                {/* Orbiting dots */}
-                <motion.div
-                  className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/30"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  style={{ transformOrigin: "0 -120px" }}
-                />
               </div>
-              <div className="relative">
-                <motion.h2
-                  className="mx-auto max-w-3xl text-balance text-4xl leading-tight text-primary-foreground md:text-6xl"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                >
-                  Ready to Transform Learning?
-                </motion.h2>
-                <motion.p
-                  className="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-primary-foreground/80"
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.15 }}
-                >
-                  Join Saral Vidhya in building a more adaptive and engaging
-                  educational future.
-                </motion.p>
+              <div className="relative grid items-center gap-10 md:grid-cols-[auto_1fr]">
+                {/* Logo medallion fills the empty left side */}
                 <motion.div
-                  className="mt-10"
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  className="relative mx-auto flex h-44 w-44 items-center justify-center md:h-60 md:w-60"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
+                  transition={{ duration: 0.9 }}
                 >
-                  <motion.a
-                    href="mailto:admin@saralvidhya.com"
-                    className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white px-7 py-4 text-sm font-medium text-primary shadow-lift"
-                    whileHover={{ scale: 1.06 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
-                    <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-sage/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-                    <span className="relative">Get Started</span>
-                    <ArrowRight className="relative h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </motion.a>
+                  <motion.div
+                    aria-hidden
+                    className="absolute inset-0 rounded-full border border-white/30"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                  />
+                  <motion.div
+                    aria-hidden
+                    className="absolute -inset-3 rounded-full border border-dashed border-white/20"
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                  />
+                  <motion.div
+                    aria-hidden
+                    className="absolute inset-2 -z-10 rounded-full bg-white/15 blur-2xl"
+                    animate={{ opacity: [0.4, 0.75, 0.4], scale: [1, 1.05, 1] }}
+                    transition={{ duration: 5, repeat: Infinity }}
+                  />
+                  <motion.img
+                    src={logo}
+                    alt="Saral Vidhya"
+                    className="relative h-32 w-32 rounded-full bg-white/95 object-contain p-3 shadow-lift md:h-44 md:w-44"
+                    animate={{ y: [0, -6, 0] }}
+                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  />
                 </motion.div>
+
+                <div className="text-center md:text-left">
+                  <motion.h2
+                    className="text-balance text-4xl leading-tight text-primary-foreground md:text-5xl lg:text-6xl"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                  >
+                    Ready to Transform Learning?
+                  </motion.h2>
+                  <motion.p
+                    className="mt-5 max-w-xl text-pretty text-lg leading-relaxed text-primary-foreground/80 md:mt-6 md:mx-0 mx-auto"
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.15 }}
+                  >
+                    Join Saral Vidhya in building a more adaptive and engaging
+                    educational future.
+                  </motion.p>
+                  <motion.div
+                    className="mt-8"
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                  >
+                    <motion.a
+                      href="mailto:admin@saralvidhya.com"
+                      className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white px-7 py-4 text-sm font-medium text-primary shadow-lift"
+                      whileHover={{ scale: 1.06 }}
+                      whileTap={{ scale: 0.97 }}
+                    >
+                      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-sage/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                      <span className="relative">Get Started</span>
+                      <ArrowRight className="relative h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </motion.a>
+                  </motion.div>
+                </div>
               </div>
             </div>
           </Reveal>
