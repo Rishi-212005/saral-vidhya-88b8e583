@@ -579,42 +579,49 @@ export function Gamification() {
   );
 }
 
-/* ─── Rotating Diamond Badge (re-usable, inspired by 4th visual) ─── */
+/* ─── Rotating Circular Badge (mirrors Rank Up animation, reusable) ─── */
 function RotatingDiamondBadge({ icon: Icon, label }: { icon: LucideIcon; label: string }) {
   return (
-    <div className="relative h-32 w-32 shrink-0 [perspective:800px]">
-      {/* Rotating diamond frame */}
+    <div className="relative h-56 w-56 md:h-64 md:w-64 [perspective:1000px]">
       <motion.div
-        aria-hidden
-        className="absolute inset-0 flex items-center justify-center"
+        className="absolute inset-0 rounded-full border-[6px] border-transparent"
+        style={{
+          borderImage:
+            "linear-gradient(135deg, var(--sage-deep), var(--peach), var(--sage-deep)) 1",
+          borderRadius: "9999px",
+        }}
         animate={{ rotate: 360 }}
-        transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+      />
+      <motion.div
+        className="absolute inset-6 rounded-full bg-gradient-to-br from-white to-cream shadow-lift"
+        style={{ transformStyle: "preserve-3d" }}
+        animate={{ rotateY: [0, 360] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "linear" }}
       >
         <div
-          className="h-24 w-24 border-[2px] rotate-45"
+          className="absolute inset-0 flex flex-col items-center justify-center rounded-full"
+          style={{ backfaceVisibility: "hidden" }}
+        >
+          <Icon className="h-10 w-10 text-sage-deep" />
+          <div className="mt-2 font-display text-2xl text-primary">{label}</div>
+        </div>
+        <div
+          className="absolute inset-0 flex items-center justify-center rounded-full bg-cta text-primary-foreground"
           style={{
-            borderImage:
-              "linear-gradient(135deg, var(--sage-deep), var(--peach), var(--sage-deep)) 1",
+            backfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
           }}
-        />
+        >
+          <Sparkles className="h-12 w-12" />
+        </div>
       </motion.div>
-      {/* Soft glow */}
       <motion.div
         aria-hidden
-        className="absolute inset-3 -z-10 rounded-full bg-sage/25 blur-2xl"
-        animate={{ opacity: [0.4, 0.75, 0.4], scale: [1, 1.08, 1] }}
-        transition={{ duration: 5, repeat: Infinity }}
+        className="absolute -inset-4 -z-10 rounded-full bg-sage/30 blur-3xl"
+        animate={{ opacity: [0.4, 0.8, 0.4], scale: [1, 1.08, 1] }}
+        transition={{ duration: 4, repeat: Infinity }}
       />
-      {/* Center oval card */}
-      <motion.div
-        className="absolute left-1/2 top-1/2 flex h-20 w-16 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-[50%] bg-gradient-to-br from-white to-cream shadow-lift"
-        animate={{ y: [0, -4, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        whileHover={{ scale: 1.06 }}
-      >
-        <Icon className="h-4 w-4 text-sage-deep" />
-        <div className="mt-1 font-display text-[11px] text-primary">{label}</div>
-      </motion.div>
     </div>
   );
 }
