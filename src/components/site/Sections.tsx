@@ -582,7 +582,7 @@ export function Gamification() {
 /* ─── Rotating Diamond Badge (re-usable, inspired by 4th visual) ─── */
 function RotatingDiamondBadge({ icon: Icon, label }: { icon: LucideIcon; label: string }) {
   return (
-    <div className="relative h-64 w-56 [perspective:1000px]">
+    <div className="relative h-32 w-32 shrink-0 [perspective:800px]">
       {/* Rotating diamond frame */}
       <motion.div
         aria-hidden
@@ -591,7 +591,7 @@ function RotatingDiamondBadge({ icon: Icon, label }: { icon: LucideIcon; label: 
         transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
       >
         <div
-          className="h-44 w-44 border-[2px] rotate-45"
+          className="h-24 w-24 border-[2px] rotate-45"
           style={{
             borderImage:
               "linear-gradient(135deg, var(--sage-deep), var(--peach), var(--sage-deep)) 1",
@@ -601,19 +601,19 @@ function RotatingDiamondBadge({ icon: Icon, label }: { icon: LucideIcon; label: 
       {/* Soft glow */}
       <motion.div
         aria-hidden
-        className="absolute inset-6 -z-10 rounded-full bg-sage/25 blur-3xl"
+        className="absolute inset-3 -z-10 rounded-full bg-sage/25 blur-2xl"
         animate={{ opacity: [0.4, 0.75, 0.4], scale: [1, 1.08, 1] }}
         transition={{ duration: 5, repeat: Infinity }}
       />
       {/* Center oval card */}
       <motion.div
-        className="absolute left-1/2 top-1/2 flex h-36 w-28 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-[50%] bg-gradient-to-br from-white to-cream shadow-lift"
-        animate={{ y: [0, -6, 0] }}
+        className="absolute left-1/2 top-1/2 flex h-20 w-16 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-[50%] bg-gradient-to-br from-white to-cream shadow-lift"
+        animate={{ y: [0, -4, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         whileHover={{ scale: 1.06 }}
       >
-        <Icon className="h-7 w-7 text-sage-deep" />
-        <div className="mt-2 font-display text-base text-primary">{label}</div>
+        <Icon className="h-4 w-4 text-sage-deep" />
+        <div className="mt-1 font-display text-[11px] text-primary">{label}</div>
       </motion.div>
     </div>
   );
