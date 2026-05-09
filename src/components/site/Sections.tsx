@@ -750,12 +750,16 @@ export function Pillars() {
           />
         </div>
         <div className="relative mx-auto max-w-7xl px-6">
-          <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-8">
+          <div className="grid items-center gap-10 md:grid-cols-[1.6fr_1fr]">
             <SectionHeader
               eyebrow="Why It Matters"
               title="Strategic Pillars"
+              subtitle="Three foundational commitments that keep Saral Vidhya focused, trustworthy, and built for every learner."
+              align="left"
             />
-            <RotatingDiamondBadge icon={Target} label="Achieve" />
+            <Reveal variant="scaleIn" className="flex items-center justify-center md:justify-end">
+              <RotatingDiamondBadge icon={Target} label="Achieve" />
+            </Reveal>
           </div>
 
           <StaggerGroup className="mt-10 grid gap-6 md:grid-cols-3 [perspective:1400px]">
