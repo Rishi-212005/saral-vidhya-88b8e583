@@ -757,8 +757,10 @@ export function Pillars() {
               subtitle="Three foundational commitments that keep Saral Vidhya focused, trustworthy, and built for every learner."
               align="left"
             />
-            <Reveal variant="scaleIn" className="flex items-center justify-center md:justify-end">
-              <RotatingDiamondBadge icon={Target} label="Achieve" />
+            <Reveal variant="scaleIn" className="flex items-center justify-center md:justify-end md:pr-4">
+              <div className="scale-90 md:scale-95 origin-center">
+                <RotatingDiamondBadge icon={Target} label="Achieve" />
+              </div>
             </Reveal>
           </div>
 
