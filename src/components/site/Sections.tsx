@@ -757,8 +757,10 @@ export function Pillars() {
               subtitle="Three foundational commitments that keep Saral Vidhya focused, trustworthy, and built for every learner."
               align="left"
             />
-            <Reveal variant="scaleIn" className="flex items-center justify-center md:justify-end">
-              <RotatingDiamondBadge icon={Target} label="Achieve" />
+            <Reveal variant="scaleIn" className="flex items-center justify-center md:justify-end md:pr-4">
+              <div className="scale-90 md:scale-95 origin-center">
+                <RotatingDiamondBadge icon={Target} label="Achieve" />
+              </div>
             </Reveal>
           </div>
 
@@ -843,7 +845,7 @@ export function CTA() {
               <div className="relative grid items-center gap-10 md:grid-cols-[auto_1fr]">
                 {/* Logo medallion fills the empty left side */}
                 <motion.div
-                  className="relative mx-auto flex h-44 w-44 items-center justify-center md:h-60 md:w-60"
+                  className="relative mx-auto flex h-48 w-48 items-center justify-center md:h-56 md:w-56"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
@@ -870,7 +872,7 @@ export function CTA() {
                   <motion.img
                     src={logo}
                     alt="Saral Vidhya"
-                    className="relative h-32 w-32 rounded-full bg-white/95 object-contain p-3 shadow-lift md:h-44 md:w-44"
+                    className="relative h-32 w-32 rounded-full bg-white object-contain p-2 shadow-lift md:h-40 md:w-40"
                     animate={{ y: [0, -6, 0] }}
                     transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                   />
