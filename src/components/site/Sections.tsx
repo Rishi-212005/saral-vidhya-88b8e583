@@ -842,10 +842,10 @@ export function CTA() {
                   transition={{ duration: 15, repeat: Infinity }}
                 />
               </div>
-              <div className="relative grid items-center gap-10 md:grid-cols-[auto_1fr]">
+              <div className="relative grid items-center gap-8 md:grid-cols-[auto_1fr] md:gap-14">
                 {/* Logo medallion fills the empty left side */}
                 <motion.div
-                  className="relative mx-auto flex h-48 w-48 items-center justify-center md:h-56 md:w-56"
+                  className="relative mx-auto flex h-56 w-56 items-center justify-center md:h-72 md:w-72"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
@@ -869,13 +869,17 @@ export function CTA() {
                     animate={{ opacity: [0.4, 0.75, 0.4], scale: [1, 1.05, 1] }}
                     transition={{ duration: 5, repeat: Infinity }}
                   />
-                  <motion.img
-                    src={logo}
-                    alt="Saral Vidhya"
-                    className="relative h-32 w-32 rounded-full bg-white object-contain p-2 shadow-lift md:h-40 md:w-40"
+                  <motion.div
+                    className="relative flex h-44 w-44 items-center justify-center overflow-hidden rounded-full bg-white shadow-lift md:h-60 md:w-60"
                     animate={{ y: [0, -6, 0] }}
                     transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                  />
+                  >
+                    <img
+                      src={logo}
+                      alt="Saral Vidhya"
+                      className="h-[88%] w-[88%] object-contain"
+                    />
+                  </motion.div>
                 </motion.div>
 
                 <div className="text-center md:text-left">
