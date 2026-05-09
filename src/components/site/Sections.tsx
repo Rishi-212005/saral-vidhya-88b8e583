@@ -743,16 +743,15 @@ export function Pillars() {
           />
         </div>
         <div className="relative mx-auto max-w-7xl px-6">
-          <SectionHeader
-            eyebrow="Why It Matters"
-            title="Strategic Pillars"
-          />
-
-          <div className="mt-10 flex justify-center">
+          <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-8">
+            <SectionHeader
+              eyebrow="Why It Matters"
+              title="Strategic Pillars"
+            />
             <RotatingDiamondBadge icon={Target} label="Achieve" />
           </div>
 
-          <StaggerGroup className="mt-14 grid gap-6 md:grid-cols-3 [perspective:1400px]">
+          <StaggerGroup className="mt-10 grid gap-6 md:grid-cols-3 [perspective:1400px]">
             {cards.map((c, i) => (
               <StaggerItem key={c.title}>
                 <motion.article
