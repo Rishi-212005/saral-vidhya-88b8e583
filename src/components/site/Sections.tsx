@@ -960,7 +960,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto mt-12 max-w-7xl border-t border-border/60 px-6 pt-6 text-xs text-foreground/55">
+      <div className="mx-auto mt-12 max-w-7xl border-t border-border/60 px-6 pt-6 text-center text-xs text-foreground/55">
         © {new Date().getFullYear()} Saral Vidhya. Learning Simplified.
       </div>
     </footer>
