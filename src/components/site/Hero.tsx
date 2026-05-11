@@ -291,7 +291,7 @@ export function Hero() {
                 <ArrowRight className="relative h-4 w-4 transition-transform group-hover:translate-x-1" />
               </motion.a>
               <motion.a
-                href="#about"
+                href="#problem"
                 className="group inline-flex items-center gap-2 rounded-full border border-border bg-white/60 px-6 py-3.5 text-sm font-medium text-primary backdrop-blur transition-all hover:bg-white hover:shadow-soft"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}

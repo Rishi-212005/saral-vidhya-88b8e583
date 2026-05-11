@@ -30,7 +30,7 @@ export function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
-          className={`flex items-center gap-6 transition-all duration-500 ${
+          className={`flex w-full items-center justify-between gap-6 transition-all duration-500 ${
             scrolled
               ? "rounded-2xl border border-white/40 bg-white/60 backdrop-blur-xl shadow-soft"
               : "bg-transparent"
