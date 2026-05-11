@@ -1,250 +1,128 @@
 # Saral Vidhya — Learning Simplified
 
-A modern, adaptive educational platform designed to democratize learning through personalized, AI-assisted experiences. Built with cutting-edge web technologies for accessible and engaging educational content delivery.
+![Saral Vidhya Banner](https://via.placeholder.com/1200x400?text=Saral+Vidhya+-+Learning+Simplified)
 
-## Overview
-
-Saral Vidhya empowers students with adaptive, accessible, and engaging educational experiences powered by intelligent personalization. The platform aims to make quality education available to every student through an intuitive, modern web interface.
-
-## Technology Stack
-
-### Core Framework
-- **React 19** - Modern UI library with concurrent rendering
-- **TanStack Start** - Full-stack React metaframework with SSR support
-- **TypeScript** - Type-safe development
-
-### Styling & UI
-- **Tailwind CSS 4** - Utility-first CSS framework
-- **Radix UI** - Comprehensive accessible component library
-  - Accordions, Alerts, Avatars, Badges, Breadcrumbs
-  - Calendars, Cards, Carousels, Charts
-  - Dialogs, Drawers, Dropdowns, Forms
-  - Navigation, Pagination, Popovers, Select
-  - Tabs, Tables, Tooltips, and more
-
-### State Management & Data
-- **TanStack React Query** - Server state management
-- **TanStack React Router** - Advanced routing with file-based routing
-
-### Forms & Validation
-- **React Hook Form** - Lightweight form management
-- **Zod** - TypeScript-first schema validation
-
-### Additional Features
-- **Framer Motion** - Animation library
-- **Lucide React** - Icon library
-- **Sonner** - Toast notifications
-- **Recharts** - Data visualization
-- **Embla Carousel** - Carousel component
-- **React Resizable Panels** - Resizable layouts
-- **Vaul** - Drawer component
-- **Day Picker** - Calendar component
-
-### Build & Development
-- **Vite 7** - Lightning-fast build tool
-- **Cloudflare Integration** - Serverless deployment
-- **Tailwind CSS Vite Plugin** - Optimized Tailwind builds
-- **ESLint + Prettier** - Code quality and formatting
-
-## Project Structure
-
-```
-saral-vidhya/
-├── src/
-│   ├── components/           # Reusable UI components
-│   │   ├── site/            # Site-specific components
-│   │   │   ├── Navbar.tsx   # Navigation bar
-│   │   │   ├── Hero.tsx     # Hero section
-│   │   │   ├── Sections.tsx # Main content sections
-│   │   │   └── motion.tsx   # Animation components
-│   │   └── ui/              # Generic UI components (Radix UI based)
-│   │       ├── button.tsx
-│   │       ├── card.tsx
-│   │       ├── form.tsx
-│   │       ├── dialog.tsx
-│   │       └── ... (20+ components)
-│   ├── routes/              # TanStack Router file-based routes
-│   │   ├── __root.tsx      # Root layout
-│   │   └── index.tsx       # Home page
-│   ├── hooks/              # Custom React hooks
-│   │   └── use-mobile.tsx
-│   ├── lib/                # Utility functions & helpers
-│   │   ├── utils.ts
-│   │   ├── error-page.ts
-│   │   └── error-capture.ts
-│   ├── assets/             # Static assets
-│   ├── router.tsx          # Router configuration
-│   ├── routeTree.gen.ts    # Generated route tree (auto)
-│   ├── server.ts           # SSR server configuration
-│   ├── start.ts            # Application entry point
-│   └── styles.css          # Global styles
-├── .tanstack/              # TanStack generated files
-├── components.json         # Component library config
-├── eslint.config.js        # ESLint configuration
-├── package.json            # Dependencies & scripts
-├── tsconfig.json           # TypeScript configuration
-├── vite.config.ts          # Vite build configuration
-├── wrangler.jsonc          # Cloudflare Workers config
-└── .gitignore              # Git ignore rules
-```
-
-## Key Features
-
-### User Interface
-- **Responsive Design** - Mobile-first approach with Tailwind CSS
-- **Accessible Components** - Radix UI ensures WCAG compliance
-- **Smooth Animations** - Framer Motion for polished interactions
-- **Dynamic Content** - TanStack Query for real-time data updates
-
-### Sections & Pages
-1. **Navigation Bar** - Persistent top navigation
-2. **Hero Section** - Landing page hero with call-to-action
-3. **About** - Platform mission and overview
-4. **Mission & Vision** - Company values and goals
-5. **Problem Statement** - Education challenges addressed
-6. **Solution** - How Saral Vidhya solves problems
-7. **Features** - Key platform capabilities
-8. **Parents Section** - Information for educators
-9. **Pillars** - Core principles and philosophies
-10. **CTA Section** - Call-to-action for sign-up
-11. **Footer** - Links and contact information
-
-## Getting Started
-
-### Prerequisites
-- Node.js 18+ or Bun
-- npm/yarn/pnpm package manager
-
-### Installation
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Build development version
-npm run build:dev
-
-# Preview production build
-npm run preview
-
-# Lint code
-npm lint
-
-# Format code
-npm run format
-```
-
-### Development
-
-The development server runs at `http://localhost:5173` (default Vite port).
-
-Changes are hot-reloaded via Vite's HMR (Hot Module Replacement).
-
-### Build Output
-
-- **Development Build**: `npm run build:dev` - Larger bundle with source maps
-- **Production Build**: `npm run build` - Optimized, minified bundle
-- **Target**: Cloudflare Workers / Edge Runtime
-
-## Deployment
-
-This project is configured for **Cloudflare Workers** deployment:
-- See `wrangler.jsonc` for Cloudflare configuration
-- Uses `@cloudflare/vite-plugin` for seamless integration
-- SSR capability via TanStack Start
-
-### Deploy to Cloudflare
-
-```bash
-npm run build
-wrangler deploy
-```
-
-## Code Quality
-
-### Linting
-```bash
-npm run lint
-```
-Uses ESLint with:
-- TypeScript support
-- React hooks rules
-- Prettier integration
-
-### Formatting
-```bash
-npm run format
-```
-Prettier configuration for consistent code style.
-
-## Architecture Highlights
-
-### Server-Side Rendering (SSR)
-- TanStack Start provides SSR out of the box
-- Server entry point: `src/server.ts`
-- Error handling and page generation for SEO
-
-### Routing
-- File-based routing (auto-generated `routeTree.gen.ts`)
-- Type-safe route navigation
-- Built-in scroll restoration
-
-### State Management
-- React Query for server state
-- Context API for UI state (if needed)
-- Form state via React Hook Form
-
-### Form Handling
-- Declarative form definitions with Zod
-- React Hook Form for lightweight management
-- Integrated error handling and validation
-
-## Browser Support
-
-- Modern browsers (ES2020 target)
-- Chrome, Firefox, Safari, Edge (latest versions)
-- Mobile browsers with responsive design
-
-## Performance Optimizations
-
-- **Vite Build Optimization** - Fast development and production builds
-- **Code Splitting** - Automatic route-based code splitting
-- **Tree Shaking** - Unused code removal in production
-- **CSS Optimization** - Tailwind CSS purging
-- **Image Optimization** - Consider implementing with sharp
-- **Caching** - Cloudflare edge caching support
-
-## Contributing
-
-When contributing to this project:
-1. Follow the existing code style (auto-formatted with Prettier)
-2. Ensure TypeScript strict mode compliance
-3. Run `npm lint` before committing
-4. Create meaningful commit messages
-5. Test responsive design across devices
-
-## Learning Resources
-
-- [TanStack Start Documentation](https://tanstack.com/start/)
-- [TanStack Router](https://tanstack.com/router/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Radix UI](https://www.radix-ui.com/)
-- [React Documentation](https://react.dev/)
-
-## License
-
-[Add your license here]
-
-## Contact & Support
-
-[Add your contact information here]
+**Saral Vidhya** is a modern, adaptive educational platform designed to democratize learning through personalized, AI-assisted experiences. Built with cutting-edge web technologies, it delivers highly accessible, engaging, and dynamic educational content tailored to individual student capabilities.
 
 ---
 
-**Saral Vidhya** - Democratizing Education Through Technology
+## 🚀 Tech Stack Overview
+
+This application is built using a state-of-the-art modern React ecosystem, utilizing the **TanStack** meta-framework to ensure maximum performance, type safety, and scalability.
+
+### Core Architecture
+- **[React 19](https://react.dev/)** – The latest version of the industry-standard UI library, leveraging concurrent rendering.
+- **[TanStack Start](https://tanstack.com/start/)** – A cutting-edge full-stack React framework providing Server-Side Rendering (SSR) and optimized edge deployments.
+- **[TypeScript](https://www.typescriptlang.org/)** – Ensuring end-to-end type safety and an exceptional developer experience.
+
+### Routing & State Management
+- **[TanStack Router](https://tanstack.com/router/)** – Fully type-safe, file-based routing for robust navigation.
+- **[TanStack Query](https://tanstack.com/query/)** – Powerful asynchronous state management and server-state synchronization.
+
+### Styling & UI Experience
+- **[Tailwind CSS v4](https://tailwindcss.com/)** – Utility-first CSS framework for rapid, highly-customizable responsive design.
+- **[Radix UI](https://www.radix-ui.com/)** – Unstyled, highly-accessible component primitives ensuring complete WCAG compliance.
+- **[Framer Motion](https://www.framer.com/motion/)** – Creating fluid, cinematic scroll reveals, staggering layouts, and micro-animations.
+- **[Lucide React](https://lucide.dev/)** – Beautiful, consistent iconography.
+- **[Vaul](https://vaul.emilkowal.ski/)** & **[Embla Carousel](https://www.embla-carousel.com/)** – For touch-friendly drawers and sliders.
+
+### Forms & Data Validation
+- **[React Hook Form](https://react-hook-form.com/)** – Performant, flexible, and extensible form management.
+- **[Zod](https://zod.dev/)** – TypeScript-first schema declaration and validation.
+
+### Build & Deployment
+- **[Vite 7](https://vitejs.dev/)** – Next-generation, lightning-fast frontend tooling.
+- **Cloudflare Workers** – Configured for high-speed, serverless edge deployment (`wrangler`).
+
+---
+
+## 📂 Project Structure
+
+```text
+saral-vidhya/
+├── src/
+│   ├── components/           
+│   │   ├── site/            # Core website components (Hero, Navbar, Sections, Animations)
+│   │   └── ui/              # Reusable UI library (Buttons, Cards, Dialogs via Radix)
+│   ├── routes/              # TanStack file-based route definitions
+│   │   ├── __root.tsx       # Root application layout
+│   │   └── index.tsx        # Homepage route
+│   ├── hooks/               # Custom React hooks (e.g., mobile detection)
+│   ├── lib/                 # Utility functions and formatters
+│   ├── assets/              # Static media (Logos, Vectors)
+│   ├── router.tsx           # Global router configuration
+│   ├── server.ts            # SSR entry point and server logic
+│   └── start.ts             # Application client entry point
+├── public/                  # Publicly served static assets
+├── package.json             # Dependencies and npm scripts
+├── tailwind.config.ts       # Tailwind CSS configuration
+├── tsconfig.json            # TypeScript configuration
+└── vite.config.ts           # Vite bundler configuration
+```
+
+---
+
+## 🌟 Key Features
+
+1. **Adaptive Viewport Layout:** Content sections are highly responsive, utilizing tailored padding and grid structures to perfectly fit standard monitor viewports without aggressive scrolling.
+2. **Cinematic Animations:** Uses `Framer Motion` for staggered group reveals, 3D card tilt effects, parallax scrolling, and animated gradient orbs.
+3. **Component-Driven UI:** Everything is modularized. The UI is split intelligently into specific components (`Hero.tsx`, `Sections.tsx`) allowing for high maintainability.
+4. **Edge-Ready Serverless Design:** Pre-configured for Cloudflare deployment, meaning sub-millisecond routing and Server-Side Rendering capabilities at the edge.
+
+---
+
+## 🛠️ Getting Started
+
+### Prerequisites
+- **Node.js** (v18 or newer recommended)
+- **npm** (v9 or newer)
+
+### Local Development
+
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+   > The application will be running locally at `http://localhost:5173`. Vite provides instantaneous Hot Module Replacement (HMR).
+
+3. **Build for production:**
+   ```bash
+   npm run build
+   ```
+   > This compiles the application, resolves TypeScript checks, and bundles assets for deployment.
+
+4. **Lint and Format:**
+   ```bash
+   npm run lint
+   npm run format
+   ```
+
+---
+
+## 🚀 Deployment (Cloudflare)
+
+This repository is pre-configured for seamless deployment to **Cloudflare Workers**. 
+
+1. Ensure you have the Cloudflare CLI (`wrangler`) installed and authenticated.
+2. Run the production build:
+   ```bash
+   npm run build
+   ```
+3. Deploy to the edge:
+   ```bash
+   wrangler deploy
+   ```
+
+---
+
+## 👨‍💻 Author & Contributions
+
+Built for modern learners, by modern developers. 
+Designed strictly following UI/UX best practices, ensuring a premium, distraction-free environment for students and parents alike.
+
+*© 2026 Saral Vidhya. Learning Simplified.*
