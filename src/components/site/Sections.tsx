@@ -46,18 +46,18 @@ function SectionHeader({
     <Reveal className={`mx-auto max-w-3xl ${align === "center" ? "text-center" : ""}`}>
       {eyebrow && (
         <motion.div
-          className="mb-4 inline-flex items-center gap-2 rounded-full border border-sage-deep/15 bg-sage-deep/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.22em] text-sage-deep/70"
+          className="mb-3 inline-flex items-center gap-2 rounded-full border border-sage-deep/15 bg-sage-deep/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.22em] text-sage-deep/70"
           whileHover={{ scale: 1.05 }}
         >
           <span className="h-1.5 w-1.5 rounded-full bg-sage-deep/50" />
           {eyebrow}
         </motion.div>
       )}
-      <h2 className="text-balance text-4xl leading-tight text-primary md:text-5xl">
+      <h2 className="text-balance text-3xl leading-tight text-primary md:text-4xl">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-5 text-pretty text-lg leading-relaxed text-foreground/70">
+        <p className="mt-3 text-pretty text-base leading-relaxed text-foreground/70">
           {subtitle}
         </p>
       )}
@@ -93,9 +93,9 @@ export function About() {
   return (
     <>
       <SectionDivider />
-      <section id="about" className="relative py-12 md:py-16">
+      <section id="about" className="relative py-12 md:py-16 scroll-mt-24">
         {/* Decorative background */}
-        <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div aria-hidden className="pointer-events-none absolute inset-0 hidden md:block">
           <motion.div
             className="absolute right-0 top-20 h-96 w-96 rounded-full bg-sage/10 blur-3xl"
             animate={{ x: [0, 20, 0], opacity: [0.3, 0.5, 0.3] }}
@@ -240,8 +240,8 @@ export function Problem() {
   return (
     <>
       <SectionDivider />
-      <section id="problem" className="relative py-8 md:py-14 overflow-hidden bg-gradient-to-b from-transparent via-peach/5 to-transparent">
-        <div aria-hidden className="pointer-events-none absolute inset-0">
+      <section id="problem" className="relative py-6 md:py-8 overflow-hidden bg-gradient-to-b from-transparent via-peach/5 to-transparent scroll-mt-24">
+        <div aria-hidden className="pointer-events-none absolute inset-0 hidden md:block">
           <motion.div
             className="absolute left-0 top-1/3 h-80 w-80 rounded-full bg-peach/10 blur-3xl"
             animate={{ x: [-20, 20, -20] }}
@@ -256,11 +256,11 @@ export function Problem() {
             subtitle="Traditional systems are failing our students by imposing rigid formats and ignoring individual learning curves."
           />
 
-          <StaggerGroup className="mt-8 grid gap-4 md:grid-cols-2 [perspective:1400px]">
+          <StaggerGroup className="mt-4 grid gap-3 md:grid-cols-2 [perspective:1400px]">
             {cards.map((c, i) => (
               <StaggerItem key={c.title}>
                 <motion.article
-                  className="group relative h-full overflow-hidden rounded-3xl border border-border/70 bg-card p-10 shadow-soft"
+                  className="group relative h-full overflow-hidden rounded-3xl border border-border/70 bg-card p-5 md:p-6 shadow-soft"
                   style={{ transformStyle: "preserve-3d" }}
                   whileHover={{
                     rotateX: 6,
@@ -274,21 +274,21 @@ export function Problem() {
                     aria-hidden
                     className={`absolute -right-8 -top-8 h-32 w-32 rounded-full ${c.accent} opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-60`}
                   />
-                  <div className="absolute right-6 top-6 font-display text-6xl text-primary/5 transition-colors duration-500 group-hover:text-primary/10">
+                  <div className="absolute right-6 top-6 font-display text-4xl text-primary/5 transition-colors duration-500 group-hover:text-primary/10">
                     0{i + 1}
                   </div>
                   <motion.div
-                    className={`mb-6 flex h-14 w-14 items-center justify-center rounded-2xl ${c.accent} text-sage-deep`}
+                    className={`mb-3 flex h-10 w-10 items-center justify-center rounded-2xl ${c.accent} text-sage-deep`}
                     whileHover={{ rotate: -8, scale: 1.1 }}
                     style={{ transform: "translateZ(30px)" }}
                   >
-                    <c.icon className="h-6 w-6" />
+                    <c.icon className="h-5 w-5" />
                   </motion.div>
-                  <h3 className="relative text-2xl text-primary md:text-3xl" style={{ transform: "translateZ(20px)" }}>{c.title}</h3>
-                  <p className="relative mt-3 text-pretty text-base leading-relaxed text-foreground/75 md:text-lg">
+                  <h3 className="relative text-lg text-primary md:text-xl" style={{ transform: "translateZ(20px)" }}>{c.title}</h3>
+                  <p className="relative mt-1.5 text-pretty text-xs leading-relaxed text-foreground/75 md:text-sm">
                     {c.desc}
                   </p>
-                  <div className="mt-6 h-[2px] w-0 rounded-full bg-gradient-to-r from-sage-deep/40 to-peach/40 transition-all duration-700 group-hover:w-full" />
+                  <div className="mt-4 h-[2px] w-0 rounded-full bg-gradient-to-r from-sage-deep/40 to-peach/40 transition-all duration-700 group-hover:w-full" />
                 </motion.article>
               </StaggerItem>
             ))}
@@ -328,8 +328,8 @@ export function Solution() {
   return (
     <>
       <SectionDivider />
-      <section id="solution" className="relative overflow-hidden py-8 md:py-14 bg-gradient-to-b from-transparent via-sage/8 to-transparent">
-        <div aria-hidden className="pointer-events-none absolute inset-0">
+      <section id="solution" className="relative overflow-hidden py-8 md:py-10 bg-gradient-to-b from-transparent via-sage/8 to-transparent scroll-mt-24">
+        <div aria-hidden className="pointer-events-none absolute inset-0 hidden md:block">
           <div className="absolute left-1/2 top-0 h-72 w-[60rem] -translate-x-1/2 rounded-full bg-sage/15 blur-3xl" />
         </div>
 
@@ -340,11 +340,11 @@ export function Solution() {
             subtitle="An AI-powered companion that complements professional educators, driving results through tailored experiences."
           />
 
-          <StaggerGroup className="mt-8 grid gap-4 md:grid-cols-2 [perspective:1400px]">
+          <StaggerGroup className="mt-6 grid gap-3 md:gap-4 md:grid-cols-2 [perspective:1400px]">
             {items.map((it, i) => (
               <StaggerItem key={it.title}>
                 <motion.article
-                  className="group relative h-full overflow-hidden rounded-3xl border border-border/70 bg-card p-9 shadow-soft"
+                  className="group relative h-full overflow-hidden rounded-3xl border border-border/70 bg-card p-6 md:p-8 shadow-soft"
                   style={{ transformStyle: "preserve-3d" }}
                   whileHover={{
                     rotateX: 5,
@@ -358,21 +358,21 @@ export function Solution() {
                     aria-hidden
                     className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br from-sage/30 to-transparent blur-3xl opacity-0 transition-opacity duration-700 group-hover:opacity-100"
                   />
-                  <div className="relative flex items-start gap-5" style={{ transform: "translateZ(24px)" }}>
+                  <div className="relative flex items-start gap-4 md:gap-5" style={{ transform: "translateZ(24px)" }}>
                     <motion.div
-                      className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-sage/25 text-sage-deep"
+                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-sage/25 text-sage-deep"
                       whileHover={{ rotate: 10, scale: 1.1 }}
                     >
-                      <it.icon className="h-6 w-6" />
+                      <it.icon className="h-5 w-5" />
                     </motion.div>
                     <div>
-                      <h3 className="text-2xl text-primary md:text-3xl">{it.title}</h3>
-                      <p className="mt-2 text-pretty text-base leading-relaxed text-foreground/75 md:text-lg">
+                      <h3 className="text-xl text-primary md:text-2xl">{it.title}</h3>
+                      <p className="mt-1.5 text-pretty text-sm leading-relaxed text-foreground/75 md:text-base">
                         {it.desc}
                       </p>
                     </div>
                   </div>
-                  <div className="mt-5 h-[2px] w-0 rounded-full bg-gradient-to-r from-sage-deep/40 to-peach/40 transition-all duration-700 group-hover:w-full" />
+                  <div className="mt-4 md:mt-5 h-[2px] w-0 rounded-full bg-gradient-to-r from-sage-deep/40 to-peach/40 transition-all duration-700 group-hover:w-full" />
                 </motion.article>
               </StaggerItem>
             ))}
@@ -396,18 +396,18 @@ export function Features() {
   return (
     <>
       <SectionDivider />
-      <section id="features" className="relative py-8 md:py-14 bg-gradient-to-b from-transparent via-sky/8 to-transparent">
+      <section id="features" className="relative py-8 md:py-10 bg-gradient-to-b from-transparent via-sky/8 to-transparent scroll-mt-24">
         <div className="mx-auto max-w-7xl px-6">
           <SectionHeader
             eyebrow="Features"
             title="Unique Selling Propositions"
           />
 
-          <StaggerGroup className="mt-8 grid gap-4 sm:grid-cols-2 [perspective:1400px]">
+          <StaggerGroup className="mt-6 grid gap-3 md:gap-4 sm:grid-cols-2 [perspective:1400px]">
             {cards.map((c, i) => (
               <StaggerItem key={c.title}>
                 <motion.article
-                  className="group relative h-full overflow-hidden rounded-3xl border border-border/70 bg-card p-9 shadow-soft cursor-default"
+                  className="group relative h-full overflow-hidden rounded-3xl border border-border/70 bg-card p-6 md:p-8 shadow-soft cursor-default"
                   style={{ transformStyle: "preserve-3d" }}
                   whileHover={{
                     rotateX: 6,
@@ -423,17 +423,17 @@ export function Features() {
                   />
                   <div className="relative" style={{ transform: "translateZ(28px)" }}>
                     <motion.div
-                      className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-secondary text-sage-deep"
+                      className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-secondary text-sage-deep"
                       whileHover={{ rotate: 12, scale: 1.15 }}
                       transition={{ type: "spring", stiffness: 400 }}
                     >
-                      <c.icon className="h-6 w-6" />
+                      <c.icon className="h-5 w-5" />
                     </motion.div>
-                    <h3 className="text-2xl text-primary md:text-3xl">{c.title}</h3>
-                    <p className="mt-3 text-base leading-relaxed text-foreground/75 md:text-lg">
+                    <h3 className="text-xl text-primary md:text-2xl">{c.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-foreground/75 md:text-base">
                       {c.desc}
                     </p>
-                    <div className="mt-5 flex items-center gap-1 text-xs font-medium text-sage-deep/0 transition-colors duration-500 group-hover:text-sage-deep">
+                    <div className="mt-4 flex items-center gap-1 text-xs font-medium text-sage-deep/0 transition-colors duration-500 group-hover:text-sage-deep">
                       Learn more <ArrowRight className="h-3 w-3 -translate-x-2 transition-transform duration-500 group-hover:translate-x-0" />
                     </div>
                   </div>
@@ -474,9 +474,9 @@ export function Gamification() {
       <SectionDivider />
       <section
         id="gamification"
-        className="relative overflow-hidden py-8 md:py-14 bg-gradient-to-b from-transparent via-sage/8 to-transparent"
+        className="relative overflow-hidden py-8 md:py-10 bg-gradient-to-b from-transparent via-sage/8 to-transparent scroll-mt-24"
       >
-        <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div aria-hidden className="pointer-events-none absolute inset-0 hidden md:block">
           <motion.div
             className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-sage/15 blur-3xl"
             animate={{ x: [0, 30, 0], y: [0, 20, 0] }}
@@ -496,13 +496,13 @@ export function Gamification() {
             subtitle="Adaptive, motivating, and balanced — built to keep every learner thriving."
           />
 
-          <div className="mt-12 grid items-center gap-12 md:grid-cols-[1.4fr_1fr]">
+          <div className="mt-8 grid items-center gap-8 md:gap-12 md:grid-cols-[1.4fr_1fr]">
             {/* Numbered list cards */}
-            <StaggerGroup className="space-y-5">
+            <StaggerGroup className="space-y-4 md:space-y-5">
               {items.map((it, i) => (
                 <StaggerItem key={it.title}>
                   <motion.div
-                    className="group relative overflow-hidden rounded-3xl border border-border/70 bg-card p-7 shadow-soft cursor-default"
+                    className="group relative overflow-hidden rounded-3xl border border-border/70 bg-card p-5 md:p-6 shadow-soft cursor-default"
                     style={{ transformStyle: "preserve-3d" }}
                     whileHover={{
                       y: -6,
@@ -517,8 +517,8 @@ export function Gamification() {
                       {it.num}
                     </div>
                     <div className="mt-2 h-[1px] w-full bg-gradient-to-r from-sage-deep/30 via-peach/30 to-transparent" />
-                    <h3 className="mt-4 text-2xl text-primary md:text-3xl">{it.title}</h3>
-                    <p className="mt-2 text-base leading-relaxed text-foreground/75 md:text-lg">
+                    <h3 className="mt-3 md:mt-4 text-xl text-primary md:text-2xl">{it.title}</h3>
+                    <p className="mt-1.5 md:mt-2 text-sm leading-relaxed text-foreground/75 md:text-base">
                       {it.desc}
                     </p>
                   </motion.div>
@@ -638,8 +638,8 @@ export function Parents() {
   return (
     <>
       <SectionDivider />
-      <section id="parents" className="relative py-8 md:py-14 overflow-hidden bg-gradient-to-b from-transparent via-sun/8 to-transparent">
-        <div aria-hidden className="pointer-events-none absolute inset-0">
+      <section id="parents" className="relative py-8 md:py-10 overflow-hidden bg-gradient-to-b from-transparent via-sun/8 to-transparent scroll-mt-24">
+        <div aria-hidden className="pointer-events-none absolute inset-0 hidden md:block">
           <motion.div
             className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-peach/10 blur-3xl"
             animate={{ scale: [1, 1.2, 1] }}
@@ -647,7 +647,7 @@ export function Parents() {
           />
         </div>
 
-        <div className="relative mx-auto grid max-w-6xl gap-16 px-6 md:grid-cols-5 md:items-center">
+        <div className="relative mx-auto grid max-w-6xl gap-10 md:gap-16 px-6 md:grid-cols-5 md:items-center">
           <Reveal className="md:col-span-2" variant="fadeLeft">
             <div className="inline-flex items-center gap-2 rounded-full border border-sage-deep/15 bg-sage-deep/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.22em] text-sage-deep/70">
               <span className="h-1.5 w-1.5 rounded-full bg-sage-deep/50" />
@@ -667,7 +667,7 @@ export function Parents() {
             {points.map((p, i) => (
               <StaggerItem key={p.title}>
                 <motion.div
-                  className="group flex items-start gap-5 rounded-3xl border border-border/70 bg-card p-7 shadow-soft cursor-default"
+                  className="group flex items-start gap-4 md:gap-5 rounded-3xl border border-border/70 bg-card p-5 md:p-6 shadow-soft cursor-default"
                   style={{ transformStyle: "preserve-3d" }}
                   whileHover={{
                     y: -6,
@@ -678,15 +678,15 @@ export function Parents() {
                   transition={{ type: "spring", stiffness: 260, damping: 20 }}
                 >
                   <motion.div
-                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-peach/30 text-sage-deep"
+                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-peach/30 text-sage-deep"
                     whileHover={{ rotate: -8, scale: 1.15 }}
                     style={{ transform: "translateZ(24px)" }}
                   >
-                    <p.icon className="h-6 w-6" />
+                    <p.icon className="h-5 w-5" />
                   </motion.div>
                   <div style={{ transform: "translateZ(16px)" }}>
-                    <h3 className="text-xl text-primary md:text-2xl">{p.title}</h3>
-                    <p className="mt-1.5 text-base leading-relaxed text-foreground/75">
+                    <h3 className="text-lg text-primary md:text-xl">{p.title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-foreground/75 md:text-base">
                       {p.desc}
                     </p>
                   </div>
@@ -736,8 +736,8 @@ export function Pillars() {
   return (
     <>
       <SectionDivider />
-      <section id="pillars" className="relative py-10 md:py-16 overflow-hidden bg-gradient-to-b from-transparent via-sage/8 to-transparent">
-        <div aria-hidden className="pointer-events-none absolute inset-0">
+      <section id="pillars" className="relative py-8 md:py-10 overflow-hidden bg-gradient-to-b from-transparent via-sage/8 to-transparent scroll-mt-24">
+        <div aria-hidden className="pointer-events-none absolute inset-0 hidden md:block">
           <motion.div
             className="absolute left-10 top-10 h-72 w-72 rounded-full bg-sage/10 blur-3xl"
             animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
@@ -750,7 +750,7 @@ export function Pillars() {
           />
         </div>
         <div className="relative mx-auto max-w-7xl px-6">
-          <div className="grid items-center gap-10 md:grid-cols-[1.6fr_1fr]">
+          <div className="grid items-center gap-8 md:grid-cols-[1.6fr_1fr]">
             <SectionHeader
               eyebrow="Why It Matters"
               title="Strategic Pillars"
@@ -764,11 +764,11 @@ export function Pillars() {
             </Reveal>
           </div>
 
-          <StaggerGroup className="mt-10 grid gap-6 md:grid-cols-3 [perspective:1400px]">
+          <StaggerGroup className="mt-8 md:mt-10 grid gap-4 md:gap-6 md:grid-cols-3 [perspective:1400px]">
             {cards.map((c, i) => (
               <StaggerItem key={c.title}>
                 <motion.article
-                  className={`group relative h-full overflow-hidden rounded-3xl border border-border/70 bg-card p-8 shadow-soft transition-colors duration-500 ${c.ring}`}
+                  className={`group relative h-full overflow-hidden rounded-3xl border border-border/70 bg-card p-6 md:p-8 shadow-soft transition-colors duration-500 ${c.ring}`}
                   style={{ transformStyle: "preserve-3d" }}
                   whileHover={{
                     rotateX: 6,
@@ -793,9 +793,9 @@ export function Pillars() {
                     transition={{ duration: 30 + i * 10, repeat: Infinity, ease: "linear" }}
                   />
                   <div className="relative" style={{ transform: "translateZ(28px)" }}>
-                    <div className="mb-5 flex items-center gap-3">
+                    <div className="mb-4 flex items-center gap-3">
                       <motion.div
-                        className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-2xl shadow-soft"
+                        className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white text-xl shadow-soft"
                         whileHover={{ rotate: 14, scale: 1.12 }}
                         transition={{ type: "spring", stiffness: 400 }}
                       >
@@ -803,12 +803,12 @@ export function Pillars() {
                       </motion.div>
                       <c.icon className="h-5 w-5 text-sage-deep/60" />
                     </div>
-                    <h3 className="text-2xl text-primary">{c.title}</h3>
-                    <p className="mt-3 text-pretty leading-relaxed text-foreground/75">
+                    <h3 className="text-xl text-primary md:text-2xl">{c.title}</h3>
+                    <p className="mt-2 text-sm text-pretty leading-relaxed text-foreground/75 md:text-base">
                       {c.desc}
                     </p>
                   </div>
-                  <div className="mt-6 h-[2px] w-0 rounded-full bg-gradient-to-r from-sage-deep/40 to-peach/40 transition-all duration-700 group-hover:w-full" />
+                  <div className="mt-5 h-[2px] w-0 rounded-full bg-gradient-to-r from-sage-deep/40 to-peach/40 transition-all duration-700 group-hover:w-full" />
                 </motion.article>
               </StaggerItem>
             ))}
@@ -826,11 +826,11 @@ export function CTA() {
   return (
     <>
       <SectionDivider />
-      <section id="cta" className="relative py-20 md:py-24">
+      <section id="cta" className="relative py-20 md:py-24 scroll-mt-24">
         <div className="mx-auto max-w-6xl px-6">
           <Reveal variant="scaleIn">
             <div className="relative overflow-hidden rounded-[2rem] bg-cta animate-gradient px-8 py-16 shadow-lift md:px-14 md:py-20">
-              <div aria-hidden className="pointer-events-none absolute inset-0">
+              <div aria-hidden className="pointer-events-none absolute inset-0 hidden md:block">
                 <motion.div
                   className="absolute left-10 top-10 h-40 w-40 rounded-full bg-white/10 blur-3xl"
                   animate={{ x: [0, 40, 0], y: [0, -30, 0] }}
@@ -845,7 +845,7 @@ export function CTA() {
               <div className="relative grid items-center gap-8 md:grid-cols-[auto_1fr] md:gap-14">
                 {/* Logo medallion fills the empty left side */}
                 <motion.div
-                  className="relative mx-auto flex h-64 w-64 items-center justify-center md:h-80 md:w-80"
+                  className="relative mx-auto flex h-72 w-72 items-center justify-center md:h-[22rem] md:w-[22rem]"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
@@ -853,31 +853,31 @@ export function CTA() {
                 >
                   <motion.div
                     aria-hidden
-                    className="absolute inset-0 rounded-full border border-white/30"
+                    className="absolute inset-0 rounded-full border border-white/30 hidden md:block"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                   />
                   <motion.div
                     aria-hidden
-                    className="absolute -inset-3 rounded-full border border-dashed border-white/20"
+                    className="absolute -inset-3 rounded-full border border-dashed border-white/20 hidden md:block"
                     animate={{ rotate: -360 }}
                     transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
                   />
                   <motion.div
                     aria-hidden
-                    className="absolute inset-2 -z-10 rounded-full bg-white/15 blur-2xl"
+                    className="absolute inset-2 -z-10 rounded-full bg-white/15 blur-2xl hidden md:block"
                     animate={{ opacity: [0.4, 0.75, 0.4], scale: [1, 1.05, 1] }}
                     transition={{ duration: 5, repeat: Infinity }}
                   />
                   <motion.div
-                    className="relative flex h-52 w-52 items-center justify-center overflow-hidden rounded-full bg-white shadow-lift md:h-72 md:w-72"
+                    className="relative flex h-60 w-60 items-center justify-center overflow-hidden rounded-full bg-white shadow-lift md:h-80 md:w-80"
                     animate={{ y: [0, -6, 0] }}
                     transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                   >
                     <img
                       src={logo}
                       alt="Saral Vidhya"
-                      className="h-[82%] w-[82%] object-contain"
+                      className="h-[74%] w-[74%] object-contain"
                     />
                   </motion.div>
                 </motion.div>

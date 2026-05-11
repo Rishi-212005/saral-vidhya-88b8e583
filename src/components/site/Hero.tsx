@@ -21,7 +21,7 @@ export function Hero() {
   return (
     <section id="home" ref={ref} className="relative min-h-screen overflow-hidden bg-hero pt-28 pb-16 md:pt-32 md:pb-20">
       {/* ─── Floating blurred orbs ─── */}
-      <div aria-hidden className="pointer-events-none absolute inset-0">
+      <div aria-hidden className="pointer-events-none absolute inset-0 hidden md:block">
         <motion.div
           className="absolute left-[5%] top-[15%] h-80 w-80 rounded-full bg-sage/30 blur-3xl"
           animate={{ x: [0, 30, -10, 0], y: [0, -20, 15, 0] }}
@@ -65,7 +65,7 @@ export function Hero() {
       ))}
 
       {/* ─── Decorative geometric shapes on sides ─── */}
-      <div aria-hidden className="pointer-events-none absolute inset-0">
+      <div aria-hidden className="pointer-events-none absolute inset-0 hidden md:block">
         {/* Left side decorations */}
         <motion.div
           className="absolute left-[4%] top-[40%] h-16 w-16 rounded-2xl border border-sage-deep/10 rotate-12"
@@ -134,7 +134,7 @@ export function Hero() {
               <motion.div
                 key={`wave-${i}`}
                 aria-hidden
-                className="absolute rounded-full border-[1.5px] border-sage-deep/40 h-[260px] w-[260px] md:h-[330px] md:w-[330px]"
+                className="absolute rounded-full border-[1.5px] border-sage-deep/40 h-[260px] w-[260px] md:h-[330px] md:w-[330px] hidden md:block"
                 animate={{
                   scale: [1, 1.55],
                   opacity: [0, 0.6, 0],
@@ -152,7 +152,7 @@ export function Hero() {
               <motion.div
                 key={`wave-peach-${i}`}
                 aria-hidden
-                className="absolute rounded-full border border-peach/45 h-[260px] w-[260px] md:h-[330px] md:w-[330px]"
+                className="absolute rounded-full border border-peach/45 h-[260px] w-[260px] md:h-[330px] md:w-[330px] hidden md:block"
                 animate={{
                   scale: [1, 1.7],
                   opacity: [0, 0.5, 0],
@@ -183,7 +183,7 @@ export function Hero() {
             <motion.svg
               aria-hidden
               viewBox="0 0 400 400"
-              className="absolute h-[340px] w-[340px] md:h-[430px] md:w-[430px]"
+              className="absolute h-[340px] w-[340px] md:h-[430px] md:w-[430px] hidden md:block"
               animate={{ rotate: 360 }}
               transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
             >
@@ -196,7 +196,7 @@ export function Hero() {
             <motion.svg
               aria-hidden
               viewBox="0 0 400 400"
-              className="absolute h-[300px] w-[300px] md:h-[380px] md:w-[380px]"
+              className="absolute h-[300px] w-[300px] md:h-[380px] md:w-[380px] hidden md:block"
               animate={{ rotate: -360 }}
               transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
             >
