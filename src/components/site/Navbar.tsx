@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -26,25 +25,27 @@ export function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled ? "py-3" : "py-5"
+        scrolled ? "py-3" : "py-4"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-5">
+      <div className="mx-auto max-w-7xl px-6">
         <motion.div
-          className={`flex items-center justify-between rounded-full px-5 py-2.5 transition-all duration-500 ${
-            scrolled ? "glass shadow-soft" : "bg-transparent"
-          }`}
+          className={`flex items-center gap-6 transition-all duration-500 ${
+            scrolled
+              ? "rounded-2xl border border-white/40 bg-white/60 backdrop-blur-xl shadow-soft"
+              : "bg-transparent"
+          } ${scrolled ? "px-4 py-2.5" : "px-0 py-2"}`}
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <Link
-            to="/"
+          <a
+            href="/"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="group flex items-center gap-2.5"
+            className="group flex items-center gap-2.5 shrink-0"
           >
             <motion.img
               src={navLogo}
@@ -56,9 +57,9 @@ export function Navbar() {
             <span className="font-display text-lg tracking-tight text-primary">
               Saral Vidhya
             </span>
-          </Link>
+          </a>
 
-          <nav className="hidden items-center gap-8 md:flex">
+          <nav className="hidden flex-1 items-center justify-center gap-8 md:flex">
             {NAV.map((n, i) => (
               <motion.a
                 key={n.href}
@@ -77,7 +78,7 @@ export function Navbar() {
 
           <motion.a
             href="#cta"
-            className="hidden overflow-hidden rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-soft md:inline-flex relative group"
+            className="hidden shrink-0 overflow-hidden rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground shadow-soft md:inline-flex relative group"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
           >
@@ -87,7 +88,7 @@ export function Navbar() {
 
           {/* Mobile menu button */}
           <button
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary/80 text-sage-deep md:hidden"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary/80 text-sage-deep md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
